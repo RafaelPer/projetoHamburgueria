@@ -1,0 +1,54 @@
+.card-header {
+    background-color: #A300B5;
+    height: 220px;
+}
+
+.container-fluid {
+    padding: 0px;
+    width: 100%;
+}
+
+.card-body {
+    
+}
+
+.card-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    clear: both;
+    height: 150px;
+    color: white;
+}
+
+.nav-item {
+    border: 2px solid black;
+    margin: 5px;
+    border-radius: 7px;
+    background-color: white;
+}
+
+.nav-item:hover {
+    border: 2px solid black;
+    background-color: #C2130A;
+}
+
+.nav-item:hover > .nav-link {
+    color: white;
+}
+
+.active {
+    border-top: 2px solid #6CE000;
+    border-bottom: 2px solid #6CE000;
+    background-color: black;
+}
+
+.active > .nav-link {
+    color: white;
+}
+
+.nav-link {
+    color: black;
+    font-weight: bolder;
+}

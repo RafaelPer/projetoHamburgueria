@@ -3,6 +3,7 @@ from apps.lanches.models import Lanche
 from apps.bebidas.models import Bebida
 from apps.funcionarios.models import Funcionario
 from apps.clientes.models import Cliente
+from apps.adicionais.models import Adicional
 from datetime import datetime
 # Create your models here.
 
@@ -31,6 +32,7 @@ class Pedido(models.Model):
     pedidoCliente = models.ManyToManyField(Cliente)
     pedidoBebida = models.ManyToManyField(Bebida)
     pedidoLanche = models.ManyToManyField(Lanche)
+    pedidoAdicional = models.ManyToManyField(Adicional)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
