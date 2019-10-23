@@ -1,0 +1,22 @@
+.btn {
+    width: 100%;
+}
+
+.h1 {
+    font-size: 20pt;
+}
+
+.button-action {
+    margin: 10px;
+    width: 33,1%;
+}
+
+.formNovoIngredi {
+    box-shadow: 2px 2px 2px #cccccc;
+    margin-top: 10px;
+    border: 2px solid #cccccc;
+}
+
+.divDesc {
+    width: 100%;
+}

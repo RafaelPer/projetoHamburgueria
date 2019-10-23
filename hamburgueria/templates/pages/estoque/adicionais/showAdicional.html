@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}VISUALIZAÇÃO DE ADICIONAL{% endblock title %}
+
+{% block cssPage %}
+    <link rel="stylesheet" href="{% static 'pages/estoque/adicionais/css/stylesAd.css' %}">
+{% endblock cssPage %}
+
+{% block menu %}
+{% endblock menu %}
+
+{% block content %}
+    <div>
+        <h1 class="h1 text-center">TELA DE VISUALIZAÇÃO DE ADICIONAL</h1>
+        <div>
+            {% csrf_token %}
+            <!--{{ adicional_form.as_p }}-->
+            {% if adicional_form == None %}
+                <a class="btn btn-secondary" href="">VOLTAR/button>
+            {% else %}
+            <div class="form-row">
+
+                <div class="col-md-5 mb-3">
+                    {{ adicional_form.nome.label }}
+                    {{ adicional_form.nome }}
+                    <div class="valid-feedback">
+                        Campo Esta Bom!
+                    </div>
+                    <div class="invalid-feedback">
+                        Por Favor Escreva um Nome!!!
+                    </div>
+                </div>
+
+                
+                <div class="col-md-7 mb-3">
+                    {{ adicional_form.preco.label }}
+                    <div class="input-group">
+                        {{ adicional_form.preco }}
+                        <div class="invalid-feedback">
+                            Informe o Preço do Adicional!!!
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="col-md-5 mb-3 ">
+                    {{ adicional_form.quantidade.label }}
+                    {{ adicional_form.quantidade }}
+                    <div class="invalid-feedback">
+                        Informe a Quantidade de Produtos!!!
+                    </div>
+                </div>
+                
+
+                <div class="col-md-7 mb-3">
+                    {{ adicional_form.unidade.label }}
+                    {{ adicional_form.unidade }}
+                    <div class="invalid-feedback">
+                        Entre Com Uma Unidade!!!
+                    </div>
+                </div>
+
+
+                <div class="divDesc">
+                    {{ adicional_form.descricao.label }}
+                    {{ adicional_form.descricao }}
+                    <div class="invalid-feedback">
+                        Por Favor Digite uma Descrição!!!
+                    </div>
+                </div>
+
+                <div class="divDesc">
+                    {{ adicional_form.adicionalFornecedor.label }}
+                    {{ adicional_form.adicionalFornecedor }}
+                    <div class="invalid-feedback">
+                        Por Favor Digite uma Descrição!!!
+                    </div>
+                </div>
+
+                
+            </div><br>
+            <a class="btn btn-warning button-action" href="{% url 'editar_adicional' idAdicional %}">EDITAR</a>
+            <a class="btn btn-danger button-action" href="{% url 'eliminar_adicional' idAdicional %}">DELETAR</a>
+            <a class="btn btn-dark button-action" href="">COMPRAR</a>
+            <a class="btn btn-secondary button-action" href="">AVISAR FALTA</a>
+            <a class="btn btn-primary button-action" href="{% url 'estoque' %}">VOLTAR</a>   
+            {% endif %}         
+        </div>
+    </div>
+{% endblock content %}

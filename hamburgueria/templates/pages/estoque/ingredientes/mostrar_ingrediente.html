@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}VISUALIZAÇÃO DE INGREDIENTE{% endblock title %}
+
+{% block cssPage %}
+    <link rel="stylesheet" href="{% static 'pages/estoque/ingredientes/css/stylesIngred.css' %}">
+{% endblock cssPage %}
+
+{% block menu %}
+{% endblock menu %}
+
+{% block content %}
+    <div>
+        <h1 class="h1 text-center">TELA DE VISUALIZAÇÃO DE INGREDIENTE</h1>
+        <div>
+            {% csrf_token %}
+            <!--{{ adicional_form.as_p }}-->
+            {% if ingrediente_form == None %}
+                <a class="btn btn-secondary" href="">VOLTAR/button>
+            {% else %}
+            <div class="form-row">
+
+                <div class="col-md-5 mb-3">
+                    {{ ingrediente_form.nome.label }}
+                    {{ ingrediente_form.nome }}
+                    <div class="valid-feedback">
+                        Campo Esta Bom!
+                    </div>
+                    <div class="invalid-feedback">
+                        Por Favor Escreva um Nome!!!
+                    </div>
+                </div>
+
+                
+                <div class="col-md-7 mb-3">
+                    {{ ingrediente_form.preco.label }}
+                    <div class="input-group">
+                        {{ ingrediente_form.preco }}
+                        <div class="invalid-feedback">
+                            Informe o Preço do Ingrediente!!!
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="col-md-5 mb-3 ">
+                    {{ ingrediente_form.quantidade.label }}
+                    {{ ingrediente_form.quantidade }}
+                    <div class="invalid-feedback">
+                        Informe a Quantidade de Produtos!!!
+                    </div>
+                </div>
+                
+
+                <div class="col-md-7 mb-3">
+                    {{ ingrediente_form.unidade.label }}
+                    {{ ingrediente_form.unidade }}
+                    <div class="invalid-feedback">
+                        Entre Com Uma Unidade!!!
+                    </div>
+                </div>
+
+
+                <div class="divDesc">
+                    {{ ingrediente_form.descricao.label }}
+                    {{ ingrediente_form.descricao }}
+                    <div class="invalid-feedback">
+                        Por Favor Digite uma Descrição!!!
+                    </div>
+                </div>
+
+                <div class="divDesc">
+                    {{ ingrediente_form.ingredienteFornecedor.label }}
+                    {{ ingrediente_form.ingredienteFornecedor }}
+                    <div class="invalid-feedback">
+                        Por Favor Digite uma Descrição!!!
+                    </div>
+                </div>
+
+                
+            </div><br>
+            <a class="btn btn-warning button-action" href="{% url 'editar_ingrediente' idIngrediente %}">EDITAR</a>
+            <a class="btn btn-danger button-action" href="{% url 'eliminar_ingrediente' idIngrediente %}">DELETAR</a>
+            <a class="btn btn-dark button-action" href="">COMPRAR</a>
+            <a class="btn btn-secondary button-action" href="">AVISAR FALTA</a>
+            <a class="btn btn-primary button-action" href="{% url 'estoque' %}">VOLTAR</a>   
+            {% endif %}         
+        </div>
+    </div>
+{% endblock content %}

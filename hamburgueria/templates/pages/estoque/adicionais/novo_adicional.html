@@ -11,78 +11,73 @@
 {% endblock menu %}
 
 {% block content %}
-    <form method="POST" class="needs-validation" novalidate>
-        {% csrf_token %}
-        <div class="form-row">
+    <div>
+        <h1 class="h1 text-center">TELA DE CRIAÇÃO DE NOVO ADICIONAL</h1>
+        <form method="POST" class="needs-validation" class="formNovoAd" novalidate>
+            {% csrf_token %}
+            <!--{{ adicional_form.as_p }}-->
+            <div class="form-row">
 
-            <div class="col-md-4 mb-3">
-                <label for="validationServer01">Nome</label>
-                <input type="text" class="form-control" id="validationCustom01" placeholder="Nome do Adicional" value="" name="nome" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-
-
-            <div class="mb-3">
-                <label for="validationTextarea">Descrição</label>
-                <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Descrição do Adicional" name="descricao" required></textarea>
-                <div class="invalid-feedback">
-                    Please enter a message in the textarea.
-                </div>
-            </div>
-
-
-            <div class="col-md-4 mb-3">
-                <label for="validationServerUsername">Username</label>
-                <div class="input-group">
-                    <input type="text" class="form-control is-invalid" id="validationServerUsername" placeholder="Username" aria-describedby="inputGroupPrepend3" required>
+                <div class="col-md-5 mb-3">
+                    {{ adicional_form.nome.label }}
+                    {{ adicional_form.nome }}
+                    <div class="valid-feedback">
+                        Campo Esta Bom!
+                    </div>
                     <div class="invalid-feedback">
-                        Please choose a username.
+                        Por Favor Escreva um Nome!!!
                     </div>
                 </div>
-            </div>
 
-
-            <div class="col-md-6 mb-3">
-                <label for="validationServer03">City</label>
-                <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="City" required>
-                <div class="invalid-feedback">
-                    Please provide a valid city.
+                
+                <div class="col-md-7 mb-3">
+                    {{ adicional_form.preco.label }}
+                    <div class="input-group">
+                        {{ adicional_form.preco }}
+                        <div class="invalid-feedback">
+                            Informe o Preço do Adicional!!!
+                        </div>
+                    </div>
                 </div>
-            </div>
+                
 
-
-            <div class="col-md-3 mb-3">
-                <label for="validationServer04">State</label>
-                <input type="text" class="form-control is-invalid" id="validationServer04" placeholder="State" required>
-                <div class="invalid-feedback">
-                    Please provide a valid state.
+                <div class="col-md-5 mb-3 ">
+                    {{ adicional_form.quantidade.label }}
+                    {{ adicional_form.quantidade }}
+                    <div class="invalid-feedback">
+                        Informe a Quantidade de Produtos!!!
+                    </div>
                 </div>
-            </div>
+                
 
-
-            <div class="col-md-3 mb-3">
-                <label for="validationServer05">Zip</label>
-                <input type="text" class="form-control is-invalid" id="validationServer05" placeholder="Zip" required>
-                <div class="invalid-feedback">
-                    Please provide a valid zip.
+                <div class="col-md-7 mb-3">
+                    {{ adicional_form.unidade.label }}
+                    {{ adicional_form.unidade }}
+                    <div class="invalid-feedback">
+                        Entre Com Uma Unidade!!!
+                    </div>
                 </div>
-            </div>
 
-            
-        </div>
-        <div class="form-group">
-            <div class="form-check">
-                <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
-                <label class="form-check-label" for="invalidCheck3">
-                    Agree to terms and conditions
-                </label>
-                <div class="invalid-feedback">
-                    You must agree before submitting.
+
+                <div class="divDesc">
+                    {{ adicional_form.descricao.label }}
+                    {{ adicional_form.descricao }}
+                    <div class="invalid-feedback">
+                        Por Favor Digite uma Descrição!!!
+                    </div>
                 </div>
-            </div>
-        </div>
-        <button class="btn btn-success" type="submit">CRIAR</button>
-    </form>
+
+                <div class="divDesc">
+                    {{ adicional_form.adicionalFornecedor.label }}
+                    {{ adicional_form.adicionalFornecedor }}
+                    <div class="invalid-feedback">
+                        Por Favor Digite uma Descrição!!!
+                    </div>
+                </div>
+
+                
+            </div><br>
+            <button class="btn btn-success" type="submit">CRIAR</button>
+        </form>
+    </div>
 {% endblock content %}

@@ -1,0 +1,30 @@
+.h2 {
+    font-size: 20pt;
+}
+
+.h3{
+    font-size: 16pt;
+}
+
+.button-estoque {
+    width: 33.1%;
+}
+
+.button-action {
+    margin: 10px;
+}
+
+.search {
+    margin-top: 10px;
+}
+
+.estoque-div {
+    margin: 10px;
+    padding: 5px;
+    border: 2px solid #cccccc;
+    box-shadow: 3px 3px 3px #cccccc;
+}
+
+.ingredientes-div {
+    margin-top: 25px;
+}

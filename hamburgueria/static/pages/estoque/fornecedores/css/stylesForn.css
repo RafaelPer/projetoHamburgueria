@@ -1,0 +1,46 @@
+.btn {
+    width: 100%;
+}
+
+.h1 {
+    font-size: 20pt;
+}
+
+.button-action {
+    margin: 10px;
+    width: 33,1%;
+}
+
+.formNovoForn {
+    box-shadow: 2px 2px 2px #cccccc;
+    margin-top: 10px;
+    border: 2px solid #cccccc;
+}
+
+.divDesc {
+    width: 100%;
+}
+
+.h2 {
+    font-size: 20pt;
+}
+
+.h3{
+    font-size: 16pt;
+}
+
+.button-forn {
+    width: 33.1%;
+}
+
+
+.search {
+    margin-top: 10px;
+}
+
+.forn-div {
+    margin: 10px;
+    padding: 5px;
+    border: 2px solid #cccccc;
+    box-shadow: 3px 3px 3px #cccccc;
+}

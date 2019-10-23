@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}CRIAÇÃO DE FORNECEDOR{% endblock title %}
+
+{% block cssPage %}
+    <link rel="stylesheet" href="{% static 'pages/estoque/fornecedores/css/stylesForn.css' %}">
+{% endblock cssPage %}
+
+{% block menu %}
+{% endblock menu %}
+
+{% block content %}
+    <div>
+        <h1 class="h1 text-center">TELA DE CRIAÇÃO DE NOVO FORNECEDOR</h1>
+        <form method="POST" class="needs-validation" class="formNovoForn" novalidate>
+            {% csrf_token %}
+            <!--{{ adicional_form.as_p }}-->
+            <div class="form-row">
+
+                <div class="col-md-5 mb-3">
+                    {{ fornecedor_form.nome.label }}
+                    {{ fornecedor_form.nome }}
+                    <div class="valid-feedback">
+                        Campo Esta Bom!
+                    </div>
+                    <div class="invalid-feedback">
+                        Por Favor Escreva um Nome!!!
+                    </div>
+                </div>
+
+                
+                <div class="col-md-7 mb-3">
+                    {{ fornecedor_form.preco.label }}
+                    <div class="input-group">
+                        {{ fornecedor_form.preco }}
+                        <div class="invalid-feedback">
+                            Informe o Preço do Fornecedor!!!
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="col-md-5 mb-3 ">
+                    {{ fornecedor_form.quantidade.label }}
+                    {{ fornecedor_form.quantidade }}
+                    <div class="invalid-feedback">
+                        Informe a Quantidade de Produtos!!!
+                    </div>
+                </div>
+                
+
+                <div class="col-md-7 mb-3">
+                    {{ fornecedor_form.unidade.label }}
+                    {{ fornecedor_form.unidade }}
+                    <div class="invalid-feedback">
+                        Entre Com Uma Unidade!!!
+                    </div>
+                </div>
+
+
+                <div class="divDesc">
+                    {{ fornecedor_form.descricao.label }}
+                    {{ fornecedor_form.descricao }}
+                    <div class="invalid-feedback">
+                        Por Favor Digite uma Descrição!!!
+                    </div>
+                </div>
+
+                <div class="divDesc">
+                    {{ fornecedor_form.fornecedorCidade.label }}
+                    {{ fornecedor_form.fornecedorCidade }}
+                    <div class="invalid-feedback">
+                        Por Favor Digite uma Descrição!!!
+                    </div>
+                </div>
+
+                
+            </div><br>
+            <button class="btn btn-success" type="submit">CRIAR</button>
+        </form>
+    </div>
+{% endblock content %}

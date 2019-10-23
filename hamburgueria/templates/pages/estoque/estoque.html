@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}LISTA DE INGREDIENTES E ADICIONAIS NO ESTOQUE{% endblock title %}
+
+{% block cssPage %}
+    <link rel="stylesheet" href="{% static 'pages/estoque/css/stylesEstoque.css' %}">
+{% endblock cssPage %}
+
+{% block menu %}
+{% endblock menu %}
+
+{% block content %}
+    <h1 class="h1 text-center">LISTA DE INGREDIENTES E ADICIONAIS NO ESTOQUE</h1>
+    <div class="search">
+        <input type="text" class="form-control" id="search" placeholder="Area de Pesquisa" name="search" required><br>
+    </div>
+    <div>
+        <a class="btn btn-secondary button-estoque" href="">FORNECEDORES</a>
+        <a class="btn btn-secondary button-estoque" href="ingredientes/novo_ingrediente">NOVO INGREDIENTE</a>
+        <a class="btn btn-secondary button-estoque" href="adicionais/novo_adicional">NOVO ADICIONAL</a>
+    </div>
+    <div>
+        <div class="ingredientes-div estoque-div">
+            <h2 class="h2 text-center">INGREDIENTES</h2>
+            {% if ingredientes %}
+                <div class="table-responsive">
+                    <table class="table text-center">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">NOME</th>
+                                <th scope="col">PREÇO</th>
+                                <th scope="col">QUANTIDADE</th>
+                                <th scope="col">UNIDADE</th>
+                                <th scope="col">DESCRIÇÃO</th>
+                                <th scope="col">FORNECEDORES</th>
+                                <th scope="col">AÇÕES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for ingrediente in ingredientes %}
+                                <tr>
+                                    <th scope="row">{{ ingrediente.idIngrediente }}</th>
+                                    <th>{{ ingrediente.nome }}</th>
+                                    <th>{{ ingrediente.preco }}</th>
+                                    <th>{{ ingrediente.quantidade }}</th>
+                                    <th>{{ ingrediente.unidade }}</th>
+                                    <th>{{ ingrediente.descricao }}</th>
+                                    <!--PARTE RELACIONADA AO VIEWS BASEADO EM CLASSES-->
+                                    <th>
+                                        {% for fornecedor in ingrediente.ingredienteFornecedor.all %}
+                                            <li>{{ fornecedor.razao_social }}</li>
+                                        {% endfor %}
+                                    </th>
+                                    <!--PARTE RELACIONADA AO VIEWS BASEADO EM CLASSES-->
+                                    <th>
+                                        <a class="btn btn-info button-action" href="{% url 'show_ingrediente' ingrediente.idIngrediente %}">VISUALIZAR</a>
+                                        <a class="btn btn-warning button-action" href="{% url 'editar_ingrediente' ingrediente.idIngrediente %}">EDITAR</a>
+                                        <a class="btn btn-danger button-action" href="{% url 'eliminar_ingrediente' ingrediente.idIngrediente %}">DELETAR</a>
+                                        <a class="btn btn-success button-action" href="">COMPRAR</a>
+                                        <a class="btn btn-dark button-action" href="">AVISAR FALTA</a>
+                                    </th>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <h3 class="h3 text-center">Não existe ingredientes registrados</h3>
+            {% endif %}
+        </div>
+
+        <div class="adicionais-div estoque-div">
+            <h2 class="h2 text-center">ADICIONAIS</h2>
+            {% if adicionais %}
+                <div class="table-responsive">
+                    <table class="table text-center">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">NOME</th>
+                                <th scope="col">PREÇO</th>
+                                <th scope="col">QUANTIDADE</th>
+                                <th scope="col">UNIDADE</th>
+                                <th scope="col">DESCRIÇÃO</th>
+                                <th scope="col">FORNECEDORES</th>
+                                <th scope="col">AÇÕES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for adicional in adicionais %}
+                                <tr>
+                                    <th scope="row">{{ adicional.idAdicional }}</th>
+                                    <th>{{ adicional.nome }}</th>
+                                    <th>{{ adicional.preco }}</th>
+                                    <th>{{ adicional.quantidade }}</th>
+                                    <th>{{ adicional.unidade }}</th>
+                                    <th>{{ adicional.descricao }}</th>
+                                    <!--PARTE RELACIONADA AO VIEWS BASEADO EM CLASSES-->
+                                    <th>
+                                        {% for fornecedor in adicional.adicionalFornecedor.all %}
+                                            <li>{{ fornecedor.razao_social }}</li>
+                                        {% endfor %}
+                                    </th>
+                                    <!--PARTE RELACIONADA AO VIEWS BASEADO EM CLASSES-->
+                                    <th>
+                                        <a class="btn btn-info button-action" href="{% url 'show_adicional' adicional.idAdicional %}">VISUALIZAR</a>
+                                        <a class="btn btn-warning button-action" href="{% url 'editar_adicional' adicional.idAdicional %}">EDITAR</a>
+                                        <a class="btn btn-danger button-action" href="{% url 'eliminar_adicional' adicional.idAdicional %}">DELETAR</a>
+                                        <a class="btn btn-success button-action" href="">COMPRAR</a>
+                                        <a class="btn btn-dark button-action" href="">AVISAR FALTA</a>
+                                    </th>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <h3 class="h3 text-center">Não existe adicionais registrados</h3>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}
