@@ -49,3 +49,12 @@
     border: 2px solid #cccccc;
     box-shadow: 3px 3px 3px #cccccc;
 }
+
+.spanLocal {
+    width: 100%; 
+    border-bottom: 2px solid #7e7e7e; 
+    margin: 10px; 
+    text-align: center; 
+    color: black; 
+    font-size: 18pt;
+}

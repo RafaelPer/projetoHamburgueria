@@ -280,28 +280,4 @@ class FornecedorFormReadonly(forms.ModelForm):
                     'readonly':'readonly',
                 }
             ),
-            'foto': forms.ImageField(
-                required=True,
-                widget=forms.FileInput(
-                    attrs= {
-                        'class': 'custom-file-input',
-                        'id': 'id_foto',
-                        'name': 'foto',
-                        'disabled': 'disabled',
-                    }
-                )
-            ),
-            'ativo': forms.MultipleChoiceField(
-                choices=STATUS,
-                required=True,
-                widget=forms.CheckboxSelectMultiple(
-                    attrs = {
-                        'class': 'custom-select',
-                        'id': 'id_ativo',
-                        'maxlength': '5',
-                        'name': 'ativo',
-                        'disabled': 'disabled',
-                    },
-                ),
-            ),
         }

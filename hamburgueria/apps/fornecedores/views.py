@@ -3,6 +3,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from .forms import FornecedorForm, FornecedorFormReadonly
 from .models import Fornecedor
 from apps.pais.models import Pais
+from apps.estado.models import Estado
+from apps.cidade.models import Cidade
 from decimal import Decimal, DecimalException
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
@@ -59,7 +61,9 @@ def listarFornecedores(request):
 
 def editarFornecedor(request, idFornecedor):
     fornecedor = Fornecedor.objects.get(idFornecedor = idFornecedor)
-    pais = Pais.objects.all()
+    paises = Pais.objects.all()
+    estados = Estado.objects.all()
+    cidades = Cidade.objects.all()
     print("FORNECEDOR: "+str(fornecedor))
     if request.method == 'GET':
         print("entrou if")
@@ -67,12 +71,12 @@ def editarFornecedor(request, idFornecedor):
         print("form if: "+str(fornecedor_form))
     else:
         print("entrou else")
-        fornecedor_form = FornecedorForm(request.POST, instance = fornecedor)
+        fornecedor_form = FornecedorForm(request.POST, request.FILES, instance = fornecedor)
         print("form else: "+str(fornecedor_form))
         if fornecedor_form.is_valid():
             fornecedor_form.save()
         return redirect('fornecedores')
-    return render(request, 'pages/estoque/fornecedores/editar_fornecedor.html', {'fornecedor_form':fornecedor_form, 'pais':pais})
+    return render(request, 'pages/estoque/fornecedores/editar_fornecedor.html', {'fornecedor_form':fornecedor_form, 'paises':paises, 'estados': estados, 'cidades': cidades})
 
 def eliminarFornecedor(request, idFornecedor):
     fornecedor = Fornecedor.objects.get(idFornecedor = idFornecedor)
@@ -82,6 +86,9 @@ def eliminarFornecedor(request, idFornecedor):
 
 def showFornecedor(request, idFornecedor):
     idForn = idFornecedor
+    paises = Pais.objects.all()
+    estados = Estado.objects.all()
+    cidades = Cidade.objects.all()
     print("idForn "+str(idForn))
     fornecedor = Fornecedor.objects.get(idFornecedor = idFornecedor)
     if request.method == 'GET':
@@ -90,4 +97,4 @@ def showFornecedor(request, idFornecedor):
         print("form if: "+str(fornecedor_form))
     else:
         fornecedor_form = None
-    return render(request, 'pages/estoque/fornecedores/mostrar_fornecedor.html', {'fornecedor_form':fornecedor_form, 'idFornecedor': idForn})
+    return render(request, 'pages/estoque/fornecedores/show_fornecedor.html', {'fornecedor_form':fornecedor_form, 'idFornecedor': idForn, 'paises':paises, 'estados': estados, 'cidades': cidades})

@@ -13,11 +13,11 @@
 {% block content %}
     <div>
         <h1 class="h1 text-center">TELA DE EDIÇÃO DE FORNECEDOR</h1>
-        <form method="POST" class="needs-validation" class="formNovoAd" novalidate>
+        <form method="POST" class="needs-validation" class="formNovoForn" enctype="multipart/form-data" novalidate>
             {% csrf_token %}
             <!--{{ adicional_form.as_p }}-->
             <div class="form-row">
-
+                <span class="spanLocal" style="width: 100%; border-bottom: 2px solid #7e7e7e; margin: 10px; text-align: center; color: black; font-size: 18pt;">INFORMAÇÕES DO FORNECEDOR</span>
                 <div class="col-md-6 mb-3">
                     {{ fornecedor_form.razao_social.label }}
                     {{ fornecedor_form.razao_social }}
@@ -143,12 +143,15 @@
                     </div>
                 </div>
 
-
-                <div class="col-md-6 mb-3">
+                
+                <span class="spanLocal">LOCALIZAÇÃO</span>
+                <a class="btn btn-warning buttonEditLoc" id="buttonEditLoc">EDITAR LOCALIZAÇÃO</a>
+                <a class="btn btn-danger buttoncancelEditLoc" id="buttoncancelEditLoc" style="display: none;">CANCELAR EDIÇÃO</a>
+                <div class="col-md-6 mb-3 editLoc" style="display: none;">
                     {{ fornecedor_form.fornecedorPais.label }}
                     <select class="form-control" name="fornecedorPais" required id="id_fornecedorPais">
                         <option value="notValue">---------</option>
-                        {% for s in pais %}
+                        {% for s in paises %}
                             <option value="{{ s.idPais }}">{{ s }}</option>
                         {% endfor %}
                     </select>
@@ -158,7 +161,7 @@
                 </div>
 
 
-                <div class="col-md-6 mb-3">
+                <div class="col-md-6 mb-3 editLoc" style="display: none;">
                     {{ fornecedor_form.fornecedorEstado.label }}
                     <select class="form-control" name="fornecedorEstado" required id="id_fornecedorEstado">
                         <option value=""></option>
@@ -169,7 +172,7 @@
                 </div>
 
 
-                <div class="col-md-6 mb-3">
+                <div class="col-md-6 mb-3 editLoc" style="display: none;">
                     {{ fornecedor_form.fornecedorCidade.label }}
                     <select class="form-control" name="fornecedorCidade" id="id_fornecedorCidade" required>
                         <option value=""></option>
@@ -178,6 +181,21 @@
                         Por Favor Digite uma Descrição!!!
                     </div>
                 </div>
+
+
+                <div class="col-md-6 mb-3 editlocreadondly">
+                    {{ fornecedor_form.fornecedorPais.label }}
+                    <input type="text" value="{% for pais in paises %}{% if pais.idPais == fornecedor_form.fornecedorPais.value %}{{ pais.nome }}{% endif %}{% endfor %}" class="form-control" id="" maxlength="100" name="" readonly>
+                </div>
+                <div class="col-md-6 mb-3 editlocreadondly">
+                    {{ fornecedor_form.fornecedorEstado.label }}
+                    <input type="text" value="{% for estado in estados %}{% if estado.idEstado == fornecedor_form.fornecedorEstado.value %}{{ estado.nome }}{% endif %}{% endfor %}" class="form-control" id="" maxlength="100" name="" readonly>
+                </div>
+                <div class="col-md-6 mb-3 editlocreadondly">
+                    {{ fornecedor_form.fornecedorCidade.label }}
+                    <input type="text" value="{% for cidade in cidades %}{% if cidade.idCidade == fornecedor_form.fornecedorCidade.value %}{{ cidade.nome }}{% endif %}{% endfor %}" class="form-control" id="" maxlength="100" name="" readonly>
+                </div>
+
             </div><br>
             <button class="btn btn-success" type="submit">FINALIZAR EDIÇÃO</button>
         </form>
@@ -185,7 +203,23 @@
 {% endblock content %}
 {% block scriptPage %}
 <script type='text/javascript'>
-
+	$("#buttonEditLoc").click(function () {
+        $(".buttonEditLoc").hide();
+        $(".editlocreadondly").hide();
+        $(".editLoc").show();
+        $(".buttoncancelEditLoc").show();
+    });
+    $("#buttoncancelEditLoc").click(function () {
+        var estado = $('select[name=fornecedorEstado]');
+        var cidade = $('select[name=fornecedorCidade]');
+        $("select[name=fornecedorPais] option[value='notValue']").prop('selected', 'true')
+        estado.empty();
+        cidade.empty();
+        $(".buttonEditLoc").show();
+        $(".editlocreadondly").show();
+        $(".editLoc").hide();
+        $(".buttoncancelEditLoc").hide();
+    });
     $(function(){
         var estado = $('select[name=fornecedorEstado]');
         var cidade = $('select[name=fornecedorCidade]');
