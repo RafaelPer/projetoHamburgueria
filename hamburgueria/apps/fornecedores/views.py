@@ -75,6 +75,9 @@ def editarFornecedor(request, idFornecedor):
         print("form else: "+str(fornecedor_form))
         if fornecedor_form.is_valid():
             fornecedor_form.save()
+            print("form is valid ")
+        else: 
+            print("form is invalid ")
         return redirect('fornecedores')
     return render(request, 'pages/estoque/fornecedores/editar_fornecedor.html', {'fornecedor_form':fornecedor_form, 'paises':paises, 'estados': estados, 'cidades': cidades})
 
