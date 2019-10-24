@@ -212,14 +212,17 @@
     $("#buttoncancelEditLoc").click(function () {
         var estado = $('select[name=fornecedorEstado]');
         var cidade = $('select[name=fornecedorCidade]');
-        $("select[name=fornecedorPais] option[value='notValue']").prop('selected', 'true')
-        estado.empty();
-        cidade.empty();
+        $("select[name=fornecedorPais] option[value='{{fornecedor_form.fornecedorPais.value}}']").prop('selected', 'true')
+        $("select[name=fornecedorEstado] option[value='{{fornecedor_form.fornecedorEstado.value}}']").prop('selected', 'true')
+        $("select[name=fornecedorCidade] option[value='{{fornecedor_form.fornecedorCidade.value}}']").prop('selected', 'true')
         $(".buttonEditLoc").show();
         $(".editlocreadondly").show();
         $(".editLoc").hide();
         $(".buttoncancelEditLoc").hide();
     });
+    $("select[name=fornecedorPais] option[value='{{fornecedor_form.fornecedorPais.value}}']").prop('selected', 'true')
+    $("select[name=fornecedorEstado] option[value='{{fornecedor_form.fornecedorEstado.value}}']").prop('selected', 'true')
+    $("select[name=fornecedorCidade] option[value='{{fornecedor_form.fornecedorCidade.value}}']").prop('selected', 'true')
     $(function(){
         var estado = $('select[name=fornecedorEstado]');
         var cidade = $('select[name=fornecedorCidade]');
