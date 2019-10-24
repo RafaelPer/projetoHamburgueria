@@ -2,12 +2,17 @@ from django.urls import path
 from . import views
 from apps.adicionais.views import criarAdicional, showAdicional, editarAdicional, eliminarAdicional
 from apps.ingredientes.views import criarIngrediente, showIngrediente, editarIngrediente, eliminarIngrediente
+from apps.fornecedores.views import criarFornecedor, showFornecedor, listarFornecedores, editarFornecedor, eliminarFornecedor
 
 urlpatterns = [
     path('homepage/', views.Home, name = 'index'),
 
     #estoque
     #path('estoque/', ListarAdicionais.as_view(), name = 'estoque'),
+    path('estoque/fornecedores/get-estado/<int:idPais>',views.get_estado, name='get_estado'),
+    path('estoque/fornecedores/get-cidade/<int:idEstado>',views.get_cidade, name='get_cidade'),
+    path('estoque/fornecedores/editar_fornecedor/get-estado/<int:idPais>',views.get_estado, name='get_estado'),
+    path('estoque/fornecedores/editar_fornecedor/get-cidade/<int:idEstado>',views.get_cidade, name='get_cidade'),
     path('estoque/', views.listarAdicionaisAndIngredientes, name = 'estoque'),
 
     #adicional
@@ -23,7 +28,7 @@ urlpatterns = [
     path('estoque/ingredientes/eliminar_ingrediente/<int:idIngrediente>', eliminarIngrediente, name = 'eliminar_ingrediente'),
 
     #fornecedores
-    path('estoque/', views.listarFornecedores, name = 'estoque'),
+    path('estoque/fornecedores', listarFornecedores, name = 'fornecedores'),
     path('estoque/fornecedores/novo_fornecedor', criarFornecedor, name = 'novo_fornecedor'),
     path('estoque/fornecedores/editar_fornecedor/<int:idFornecedor>', editarFornecedor, name = 'editar_fornecedor'),
     path('estoque/fornecedores/mostrar_fornecedor/<int:idFornecedor>', showFornecedor, name = 'show_fornecedor'),

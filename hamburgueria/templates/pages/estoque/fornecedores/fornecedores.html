@@ -16,8 +16,8 @@
         <input type="text" class="form-control" id="search" placeholder="Area de Pesquisa" name="search" required><br>
     </div>
     <div>
-        <a class="btn btn-secondary button-estoque" href="">NOVO FORNECEDOR</a>
-        <a class="btn btn-secondary button-estoque" href="">VOLTAR</a>
+        <a class="btn btn-secondary button-estoque" href="{% url 'novo_fornecedor' %}">NOVO FORNECEDOR</a>
+        <a class="btn btn-secondary button-estoque" href="{% url 'estoque' %}">VOLTAR</a>
     </div>
     <div>
         <div class="adicionais-div estoque-div">
@@ -31,7 +31,6 @@
                             <th scope="col">CNPJ</th>
                             <th scope="col">IE</th>
                             <th scope="col">PRIMEIRO TELEFONE</th>
-                            <th scope="col">PRIMEIRO CELULAR</th>
                             <th scope="col">CIDADE</th>
                             <th scope="col">AÇÕES</th>
                         </tr>
@@ -44,12 +43,11 @@
                                 <th>{{ fornecedor.cnpj }}</th>
                                 <th>{{ fornecedor.ie }}</th>
                                 <th>{{ fornecedor.telefone1 }}</th>
-                                <th>{{ fornecedor.celular1 }}</th>
                                 <th>{{ fornecedor.fornecedorCidade }}</th>
                                 <th>
-                                    <a class="btn btn-info button-action" href="{% url 'show_fornecedor' fornecedor.idFornecedor %}">VISUALIZAR</a>
-                                    <a class="btn btn-warning button-action" href="{% url 'editar_fornecedor' fornecedor.idFornecedor %}">EDITAR</a>
-                                    <a class="btn btn-danger button-action" href="{% url 'eliminar_fornecedor' fornecedor.idFornecedor %}">DELETAR</a>
+                                    <a class="btn btn-info col-md-4 mb-3" href="{% url 'show_fornecedor' fornecedor.idFornecedor %}">VISUALIZAR</a>
+                                    <a class="btn btn-warning col-md-3 mb-3" href="{% url 'editar_fornecedor' fornecedor.idFornecedor %}">EDITAR</a>
+                                    <a class="btn btn-danger col-md-4 mb-3" href="{% url 'eliminar_fornecedor' fornecedor.idFornecedor %}">DELETAR</a>
                                 </th>
                             </tr>
                         {% endfor %}

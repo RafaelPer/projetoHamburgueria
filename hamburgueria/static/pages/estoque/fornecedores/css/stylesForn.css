@@ -6,6 +6,11 @@
     font-size: 20pt;
 }
 
+.button-estoque {
+    width: 49%;
+    margin: 5px;
+}
+
 .button-action {
     margin: 10px;
     width: 33,1%;

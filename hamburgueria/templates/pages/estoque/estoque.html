@@ -16,9 +16,9 @@
         <input type="text" class="form-control" id="search" placeholder="Area de Pesquisa" name="search" required><br>
     </div>
     <div>
-        <a class="btn btn-secondary button-estoque" href="">FORNECEDORES</a>
-        <a class="btn btn-secondary button-estoque" href="ingredientes/novo_ingrediente">NOVO INGREDIENTE</a>
-        <a class="btn btn-secondary button-estoque" href="adicionais/novo_adicional">NOVO ADICIONAL</a>
+        <a class="btn btn-secondary button-estoque" href="{% url 'fornecedores' %}">FORNECEDORES</a>
+        <a class="btn btn-secondary button-estoque" href="{% url 'novo_ingrediente' %}">NOVO INGREDIENTE</a>
+        <a class="btn btn-secondary button-estoque" href="{% url 'novo_adicional' %}">NOVO ADICIONAL</a>
     </div>
     <div>
         <div class="ingredientes-div estoque-div">

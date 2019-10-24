@@ -13,71 +13,230 @@
 {% block content %}
     <div>
         <h1 class="h1 text-center">TELA DE CRIAÇÃO DE NOVO FORNECEDOR</h1>
-        <form method="POST" class="needs-validation" class="formNovoForn" novalidate>
+        <form method="POST" class="needs-validation" class="formNovoForn" enctype="multipart/form-data" novalidate>
             {% csrf_token %}
             <!--{{ adicional_form.as_p }}-->
             <div class="form-row">
 
-                <div class="col-md-5 mb-3">
-                    {{ fornecedor_form.nome.label }}
-                    {{ fornecedor_form.nome }}
-                    <div class="valid-feedback">
-                        Campo Esta Bom!
-                    </div>
-                    <div class="invalid-feedback">
-                        Por Favor Escreva um Nome!!!
-                    </div>
-                </div>
-
-                
-                <div class="col-md-7 mb-3">
-                    {{ fornecedor_form.preco.label }}
-                    <div class="input-group">
-                        {{ fornecedor_form.preco }}
-                        <div class="invalid-feedback">
-                            Informe o Preço do Fornecedor!!!
-                        </div>
-                    </div>
-                </div>
-                
-
-                <div class="col-md-5 mb-3 ">
-                    {{ fornecedor_form.quantidade.label }}
-                    {{ fornecedor_form.quantidade }}
-                    <div class="invalid-feedback">
-                        Informe a Quantidade de Produtos!!!
-                    </div>
-                </div>
-                
-
-                <div class="col-md-7 mb-3">
-                    {{ fornecedor_form.unidade.label }}
-                    {{ fornecedor_form.unidade }}
-                    <div class="invalid-feedback">
-                        Entre Com Uma Unidade!!!
-                    </div>
-                </div>
-
-
-                <div class="divDesc">
-                    {{ fornecedor_form.descricao.label }}
-                    {{ fornecedor_form.descricao }}
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.razao_social.label }}
+                    {{ fornecedor_form.razao_social }}
                     <div class="invalid-feedback">
                         Por Favor Digite uma Descrição!!!
                     </div>
                 </div>
 
-                <div class="divDesc">
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.cnpj.label }}
+                    {{ fornecedor_form.cnpj }}
+                    <div class="invalid-feedback">
+                        Por Favor Digite uma Descrição!!!
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.ie.label }}
+                    {{ fornecedor_form.ie }}
+                    <div class="invalid-feedback">
+                        Por Favor Digite uma Descrição!!!
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.rua.label }}
+                    {{ fornecedor_form.rua }}
+                    <div class="invalid-feedback">
+                        Por Favor Digite uma Descrição!!!
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.bairro.label }}
+                    {{ fornecedor_form.bairro }}
+                    <div class="invalid-feedback">
+                        Por Favor Digite uma Descrição!!!
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.cep.label }}
+                    {{ fornecedor_form.cep }}
+                    <div class="invalid-feedback">
+                        Por Favor Digite uma Descrição!!!
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.email.label }}
+                    {{ fornecedor_form.email }}
+                    <div class="invalid-feedback">
+                        Por Favor Digite uma Descrição!!!
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.numeroLocal.label }}
+                    {{ fornecedor_form.numeroLocal }}
+                    <div class="invalid-feedback">
+                        Por Favor Digite uma Descrição!!!
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.telefone1.label }}
+                    {{ fornecedor_form.telefone1 }}
+                    <div class="invalid-feedback">
+                        Por Favor Digite uma Descrição!!!
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.telefone2.label }}
+                    {{ fornecedor_form.telefone2 }}
+                    <div class="invalid-feedback">
+                        Por Favor Digite uma Descrição!!!
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.celular1.label }}
+                    {{ fornecedor_form.celular1 }}
+                    <div class="invalid-feedback">
+                        Por Favor Digite uma Descrição!!!
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.celular2.label }}
+                    {{ fornecedor_form.celular2 }}
+                    <div class="invalid-feedback">
+                        Por Favor Digite uma Descrição!!!
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.foto.label }}
+                    {{ fornecedor_form.foto }}
+                    <div class="invalid-feedback">
+                        Por Favor Digite uma Descrição!!!
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.ativo.label }}
+                    {{ fornecedor_form.ativo }}
+                    <div class="invalid-feedback">
+                        Por Favor Digite uma Descrição!!!
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.fornecedorPais.label }}
+                    <select class="form-control" name="fornecedorPais" required id="id_fornecedorPais">
+                        <option value="notValue">---------</option>
+                        {% for s in pais %}
+                            <option value="{{ s.idPais }}">{{ s }}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="invalid-feedback">
+                        Por Favor Digite uma Descrição!!!
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.fornecedorEstado.label }}
+                    <select class="form-control" name="fornecedorEstado" required id="id_fornecedorEstado">
+                        <option value=""></option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Por Favor Digite uma Descrição!!!
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 mb-3">
                     {{ fornecedor_form.fornecedorCidade.label }}
-                    {{ fornecedor_form.fornecedorCidade }}
+                    <select class="form-control" name="fornecedorCidade" id="id_fornecedorCidade" required>
+                        <option value=""></option>
+                    </select>
                     <div class="invalid-feedback">
                         Por Favor Digite uma Descrição!!!
                     </div>
                 </div>
-
                 
             </div><br>
             <button class="btn btn-success" type="submit">CRIAR</button>
         </form>
     </div>
 {% endblock content %}
+{% block scriptPage %}
+<script type='text/javascript'>
+    $(function(){
+        var estado = $('select[name=fornecedorEstado]');
+        var cidade = $('select[name=fornecedorCidade]');
+        estado.empty();
+        cidade.empty();
+        estado.prepend('<option value="Not selected" selected disabled>Select pais...</option>');
+        cidade.prepend('<option value="Not selected" selected disabled>Select estado...</option>');
+        $('select[name=fornecedorPais]').change(function(){
+            if('option[value="notValue"]'){
+                estado.empty();
+                cidade.empty();
+            }
+            if($("#idPais option:selected").text() != ("YOU SHOULD INSERT THE INITIAL VALUE OF THE pais FIELD WHEN IT IS NOT SELECTED")) {
+                var pais_id = $('select[name=fornecedorPais]').val();
+                request_url = 'get-estado/' + pais_id;
+                $.ajax({
+                    url: request_url,
+                    type: "GET",
+                    success: function(data){
+                        estado.empty();
+                        cidade.empty();
+                        estado.prepend('<option value="notValue" selected>---------</option>');
+                        $.each(data, function(key, value){
+                            console.log("Estado: ",data, key, value)
+                            estado.append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    }
+                })
+            }
+        })
+        $('select[name=fornecedorEstado]').change(function(){
+            if('option[value="notValue"]'){
+                cidade.empty();
+            }
+            if($("#idEstado option:selected").text() != ("YOU SHOULD INSERT THE INITIAL VALUE OF THE estado FIELD WHEN IT IS NOT SELECTED")) {
+                var estado_id = $('select[name=fornecedorEstado]').val();
+                request_url = 'get-cidade/' + estado_id;
+                $.ajax({
+                    url: request_url,
+                    type: "GET",
+                    success: function(data){
+                        cidade.empty();
+                        cidade.prepend('<option value="notValue" selected>---------</option>');
+                        $.each(data, function(key, value){
+                            console.log("Cidade: ",data, key, value)
+                            cidade.append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    }
+                })
+            }
+        })
+    });
+</script>
+{% endblock scriptPage %}

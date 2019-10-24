@@ -1,11 +1,12 @@
 from django import forms
 from .models import Fornecedor
+from .choices import STATUS
 
 
 class FornecedorForm(forms.ModelForm):
     class Meta:
         model = Fornecedor
-        fields = ['razao_social', 'cnpj', 'ie', 'rua', 'bairro', 'cep', 'email', 'numeroLocal', 'telefone1', 'telefone2', 'celular1', 'celular2', 'foto', 'ativo', 'fornecedorCidade']
+        fields = ['razao_social', 'cnpj', 'ie', 'rua', 'bairro', 'cep', 'email', 'numeroLocal', 'telefone1', 'telefone2', 'celular1', 'celular2', 'foto', 'ativo', 'fornecedorCidade', 'fornecedorEstado', 'fornecedorPais']
         labels = {
             'razao_social': 'Razão Social do Fornecedor',
             'cnpj': 'CNPJ',
@@ -22,6 +23,8 @@ class FornecedorForm(forms.ModelForm):
             'foto': 'Foto',
             'ativo': 'Esta Ativo?',
             'fornecedorCidade': 'Cidade',
+            'fornecedorEstado': 'Estado',
+            'fornecedorPais': 'Pais',
         }
         widgets = {
             'razao_social': forms.TextInput(
@@ -78,7 +81,7 @@ class FornecedorForm(forms.ModelForm):
                     'name': 'cep'
                 }
             ),
-            'email': forms.EmailField(
+            'email': forms.EmailInput(
                 attrs = {
                     'class': 'form-control',
                     'placeholder': 'tesste@hotmail.com',
@@ -132,32 +135,13 @@ class FornecedorForm(forms.ModelForm):
                     'name': 'celular2'
                 }
             ),
-            'foto': forms.ImageField(
-                attrs = {
-                    'class': 'form-control',
-                    'id': 'id_foto',
-                    'name': 'foto'
-                }
-            ),
-            'ativo': forms.ComboField(
-                attrs = {
-                    'class': 'form-control',
-                    'id': 'id_ativo',
-                    'maxlength': '5',
-                    'name': 'ativo'
-                }
-            ),
-            'adicionalFornecedor': forms.ChoiceField(
-                attrs = {
-                    'class': 'form-control',
-                }
-            )
+
         }
 
 class FornecedorFormReadonly(forms.ModelForm):
     class Meta:
         model = Fornecedor
-        fields = ['razao_social', 'cnpj', 'ie', 'rua', 'bairro', 'cep', 'email', 'numeroLocal', 'telefone1', 'telefone2', 'celular1', 'celular2', 'foto', 'ativo', 'fornecedorCidade']
+        fields = ['razao_social', 'cnpj', 'ie', 'rua', 'bairro', 'cep', 'email', 'numeroLocal', 'telefone1', 'telefone2', 'celular1', 'celular2', 'foto', 'ativo', 'fornecedorCidade', 'fornecedorEstado', 'fornecedorPais']
         labels = {
             'razao_social': 'Razão Social do Fornecedor',
             'cnpj': 'CNPJ',
@@ -236,7 +220,7 @@ class FornecedorFormReadonly(forms.ModelForm):
                     'readonly':'readonly',
                 }
             ),
-            'email': forms.EmailField(
+            'email': forms.EmailInput(
                 attrs = {
                     'class': 'form-control',
                     'placeholder': 'tesste@hotmail.com',
@@ -297,26 +281,27 @@ class FornecedorFormReadonly(forms.ModelForm):
                 }
             ),
             'foto': forms.ImageField(
-                attrs = {
-                    'class': 'form-control',
-                    'id': 'id_foto',
-                    'name': 'foto',
-                    'disabled': 'disabled'
-                }
+                required=True,
+                widget=forms.FileInput(
+                    attrs= {
+                        'class': 'custom-file-input',
+                        'id': 'id_foto',
+                        'name': 'foto',
+                        'disabled': 'disabled',
+                    }
+                )
             ),
-            'ativo': forms.ComboField(
-                attrs = {
-                    'class': 'form-control',
-                    'id': 'id_ativo',
-                    'maxlength': '5',
-                    'name': 'ativo'
-                    'disabled': 'disabled'
-                }
+            'ativo': forms.MultipleChoiceField(
+                choices=STATUS,
+                required=True,
+                widget=forms.CheckboxSelectMultiple(
+                    attrs = {
+                        'class': 'custom-select',
+                        'id': 'id_ativo',
+                        'maxlength': '5',
+                        'name': 'ativo',
+                        'disabled': 'disabled',
+                    },
+                ),
             ),
-            'adicionalFornecedor': forms.ChoiceField(
-                attrs = {
-                    'class': 'form-control',
-                    'disabled': 'disabled'
-                }
-            )
         }

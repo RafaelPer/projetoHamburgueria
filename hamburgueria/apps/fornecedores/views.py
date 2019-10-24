@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.exceptions import ObjectDoesNotExist
 from .forms import FornecedorForm, FornecedorFormReadonly
 from .models import Fornecedor
+from apps.pais.models import Pais
 from decimal import Decimal, DecimalException
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
@@ -13,7 +14,7 @@ from django.views.generic import ListView, DetailView, UpdateView, CreateView, D
 class ListarFornecedor(ListView):
     model = Fornecedor
     template_name = 'pages/estoque/fornecedores/fornecedores.html'
-    context_object_name = 'ingredientes'
+    context_object_name = 'fornecedores'
     queryset = Fornecedor.objects.filter(ativo = 'Sim')
 
 class CriarFornecedor(CreateView):
@@ -39,60 +40,54 @@ class EliminarFornecedor(DeleteView):
 
 #views baseadas em funções
 
-def criarIngrediente(request):
+def criarFornecedor(request):
     if request.method == 'POST':
-        #nom = request.POST.get('nome')
-        #preco = Decimal(request.POST.get('preco'))
-        #qtd = Decimal(request.POST.get('quantidade'))
-        #un = request.POST.get('unidade')
-        #desc = request.POST.get('descricao')
-        #print(nom, preco, qtd, un, desc)
-        #ingrediente = Ingrediente(nome = nom, descricao = desc, preco = preco, quantidade = qtd, unidade = un)
-        #ingrediente.save()
-        #return redirect('index')
-        #print(request.POST)
-        ingrediente_form = IngredienteForm(request.POST)
-        if ingrediente_form.is_valid():
-            ingrediente_form.save()
-            return redirect('estoque')
+        fornecedor_form = FornecedorForm(request.POST, request.FILES)
+        if fornecedor_form.is_valid():
+            print(fornecedor_form.save())
+            fornecedor_form.save()
+            return redirect('fornecedores')
     else:
-        ingrediente_form = IngredienteForm()
-    return render(request, 'pages/estoque/ingredientes/novo_ingrediente.html', {'ingrediente_form':ingrediente_form})
+        fornecedor_form = FornecedorForm()
+    print("FORNECEDOR: "+str(fornecedor_form))
+    pais = Pais.objects.all()
+    return render(request, 'pages/estoque/fornecedores/novo_fornecedor.html', {'fornecedor_form':fornecedor_form, 'pais':pais})
 
-def listarIngrediente(request):
-    ingredientes = Ingrediente.objects.all()
-    return render(request, 'pages/estoque/estoque.html', {'ingredientes':ingredientes})
+def listarFornecedores(request):
+    fornecedores = Fornecedor.objects.all()
+    return render(request, 'pages/estoque/fornecedores/fornecedores.html', {'fornecedores':fornecedores})
 
-def editarIngrediente(request, idIngrediente):
-    ingrediente = Ingrediente.objects.get(idIngrediente = idIngrediente)
-    print("INGREDIENTE: "+str(ingrediente))
+def editarFornecedor(request, idFornecedor):
+    fornecedor = Fornecedor.objects.get(idFornecedor = idFornecedor)
+    pais = Pais.objects.all()
+    print("FORNECEDOR: "+str(fornecedor))
     if request.method == 'GET':
         print("entrou if")
-        ingrediente_form = IngredienteForm(instance = ingrediente)
-        print("form if: "+str(ingrediente_form))
+        fornecedor_form = FornecedorForm(instance = fornecedor)
+        print("form if: "+str(fornecedor_form))
     else:
         print("entrou else")
-        ingrediente_form = IngredienteForm(request.POST, instance = ingrediente)
-        print("form else: "+str(ingrediente_form))
-        if ingrediente_form.is_valid():
-            ingrediente_form.save()
-        return redirect('estoque')
-    return render(request, 'pages/estoque/ingredientes/editar_ingrediente.html', {'ingrediente_form':ingrediente_form})
+        fornecedor_form = FornecedorForm(request.POST, instance = fornecedor)
+        print("form else: "+str(fornecedor_form))
+        if fornecedor_form.is_valid():
+            fornecedor_form.save()
+        return redirect('fornecedores')
+    return render(request, 'pages/estoque/fornecedores/editar_fornecedor.html', {'fornecedor_form':fornecedor_form, 'pais':pais})
 
-def eliminarIngrediente(request, idIngrediente):
-    ingrediente = Ingrediente.objects.get(idIngrediente = idIngrediente)
-    ingrediente.delete()
-    return redirect('estoque')    
+def eliminarFornecedor(request, idFornecedor):
+    fornecedor = Fornecedor.objects.get(idFornecedor = idFornecedor)
+    fornecedor.delete()
+    return redirect('fornecedores')    
 
 
-def showIngrediente(request, idIngrediente):
-    idIngred = idIngrediente
-    print("idIngred "+str(idIngred))
-    ingrediente = Ingrediente.objects.get(idIngrediente = idIngrediente)
+def showFornecedor(request, idFornecedor):
+    idForn = idFornecedor
+    print("idForn "+str(idForn))
+    fornecedor = Fornecedor.objects.get(idFornecedor = idFornecedor)
     if request.method == 'GET':
         print("entrou if")
-        ingrediente_form = IngredienteFormReadonly(instance = ingrediente)
-        print("form if: "+str(ingrediente_form))
+        fornecedor_form = FornecedorFormReadonly(instance = fornecedor)
+        print("form if: "+str(fornecedor_form))
     else:
-        ingrediente_form = None
-    return render(request, 'pages/estoque/ingredientes/mostrar_ingrediente.html', {'ingrediente_form':ingrediente_form, 'idIngrediente': idIngred})
+        fornecedor_form = None
+    return render(request, 'pages/estoque/fornecedores/mostrar_fornecedor.html', {'fornecedor_form':fornecedor_form, 'idFornecedor': idForn})

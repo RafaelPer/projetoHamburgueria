@@ -1,6 +1,8 @@
 from django.db import models
 from apps.cidade.models import Cidade
 from apps.tipoFuncionario.models import tipoFuncionario
+from apps.estado.models import Estado
+from apps.pais.models import Pais
 from datetime import datetime
 # Create your models here.
 
@@ -50,6 +52,8 @@ class Funcionario(models.Model):
         choices=STATUS,
     )
     funcionarioCidade = models.ForeignKey(Cidade, on_delete=models.CASCADE)
+    funcionarioEstado = models.ForeignKey(Estado, on_delete=models.CASCADE)
+    funcionarioPais = models.ForeignKey(Pais, on_delete=models.CASCADE)
     funcionarioTipoFuncionario = models.ForeignKey(tipoFuncionario, on_delete=models.CASCADE)
     senha = models.CharField(max_length=50, blank = False, null = False, default='')
     data_admissao = models.DateTimeField(auto_now=False, auto_now_add=False, default=datetime.now)

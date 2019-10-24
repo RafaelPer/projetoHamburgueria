@@ -1,5 +1,7 @@
 from django.db import models
 from apps.cidade.models import Cidade
+from apps.estado.models import Estado
+from apps.pais.models import Pais
 from datetime import datetime
 # Create your models here.
 
@@ -48,6 +50,8 @@ class Fornecedor(models.Model):
         choices=STATUS,
     )
     fornecedorCidade = models.ForeignKey(Cidade, on_delete=models.CASCADE)
+    fornecedorEstado = models.ForeignKey(Estado, on_delete=models.CASCADE)
+    fornecedorPais = models.ForeignKey(Pais, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
