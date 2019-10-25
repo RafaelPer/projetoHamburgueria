@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
-{% block title %}EDIÇÃO DE CLIENTE{% endblock title %}
+{% block title %}EDIÇÃO DE FUNCIONARIO{% endblock title %}
 
 {% block cssPage %}
-    <link rel="stylesheet" href="{% static 'pages/pessoas/clientes/css/stylesCli.css' %}">
+    <link rel="stylesheet" href="{% static 'pages/pessoas/funcionarios/css/stylesFunc.css' %}">
 {% endblock cssPage %}
 
 {% block menu %}
@@ -12,12 +12,12 @@
 
 {% block content %}
     <div class="formNovoCli">
-        <h1 class="h1 text-center">TELA DE EDIÇÃO DE CLIENTE</h1>
+        <h1 class="h1 text-center">TELA DE EDIÇÃO DE FUNCIONARIO</h1>
         <form method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
             {% csrf_token %}
             <!--{{ adicional_form.as_p }}-->
             <div class="form-row">
-                <span class="spanLocal">INFORMAÇÕES DO CLIENTE</span>
+                <span class="spanLocal">INFORMAÇÕES DO FUNCIONARIO</span>
                 <div class="col-md-6 mb-3">
                     {{ cliente_form.nome.label }}
                     {{ cliente_form.nome }}
