@@ -1,128 +1,128 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
-{% block title %}CRIAÇÃO DE CLIENTES{% endblock title %}
+{% block title %}CRIAÇÃO DE FUNCIONARIO{% endblock title %}
 
 {% block cssPage %}
-    <link rel="stylesheet" href="{% static 'pages/pessoas/clientes/css/stylesCli.css' %}">
+    <link rel="stylesheet" href="{% static 'pages/pessoas/funcionarios/css/stylesFunc.css' %}">
 {% endblock cssPage %}
 
 {% block menu %}
 {% endblock menu %}
 
 {% block content %}
-    <div class="formNovoCli">
-        <h1 class="h1 text-center">TELA DE CRIAÇÃO DE NOVO CLIENTE</h1>
+    <div class="formNovoFunc">
+        <h1 class="h1 text-center">TELA DE CRIAÇÃO DE NOVO FUNCIONARIO</h1>
         <form method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
             {% csrf_token %}
             <!--{{ adicional_form.as_p }}-->
             <div class="form-row">
-                <span class="spanLocal">INFORMAÇÕES DO CLIENTE</span>
+                <span class="spanLocal">INFORMAÇÕES DO FUNCIONARIO</span>
                 <div class="col-md-6 mb-3">
-                    {{ cliente_form.nome.label }}
-                    {{ cliente_form.nome }}
+                    {{ funcionario_form.nome.label }}
+                    {{ funcionario_form.nome }}
                 </div>
 
 
                 <div class="col-md-6 mb-3">
-                    {{ cliente_form.sobrenome.label }}
-                    {{ cliente_form.sobrenome }}
+                    {{ funcionario_form.sobrenome.label }}
+                    {{ funcionario_form.sobrenome }}
                 </div>
 
 
                 <div class="col-md-6 mb-3">
-                    {{ cliente_form.rg.label }}
-                    {{ cliente_form.rg }}
+                    {{ funcionario_form.rg.label }}
+                    {{ funcionario_form.rg }}
                 </div>
 
                 <div class="col-md-6 mb-3">
-                    {{ cliente_form.cpf.label }}
-                    {{ cliente_form.cpf }}
-                </div>
-
-
-                <div class="col-md-6 mb-3">
-                    {{ cliente_form.rua.label }}
-                    {{ cliente_form.rua }}
+                    {{ funcionario_form.cpf.label }}
+                    {{ funcionario_form.cpf }}
                 </div>
 
 
                 <div class="col-md-6 mb-3">
-                    {{ cliente_form.bairro.label }}
-                    {{ cliente_form.bairro }}
+                    {{ funcionario_form.rua.label }}
+                    {{ funcionario_form.rua }}
                 </div>
 
 
                 <div class="col-md-6 mb-3">
-                    {{ cliente_form.cep.label }}
-                    {{ cliente_form.cep }}
+                    {{ funcionario_form.bairro.label }}
+                    {{ funcionario_form.bairro }}
                 </div>
 
 
                 <div class="col-md-6 mb-3">
-                    {{ cliente_form.email.label }}
-                    {{ cliente_form.email }}
+                    {{ funcionario_form.cep.label }}
+                    {{ funcionario_form.cep }}
                 </div>
 
 
                 <div class="col-md-6 mb-3">
-                    {{ cliente_form.numeroCasa.label }}
-                    {{ cliente_form.numeroCasa }}
+                    {{ funcionario_form.email.label }}
+                    {{ funcionario_form.email }}
                 </div>
 
 
                 <div class="col-md-6 mb-3">
-                    {{ cliente_form.telefone1.label }}
-                    {{ cliente_form.telefone1 }}
+                    {{ funcionario_form.numeroCasa.label }}
+                    {{ funcionario_form.numeroCasa }}
                 </div>
 
 
                 <div class="col-md-6 mb-3">
-                    {{ cliente_form.telefone2.label }}
-                    {{ cliente_form.telefone2 }}
+                    {{ funcionario_form.telefone1.label }}
+                    {{ funcionario_form.telefone1 }}
                 </div>
 
 
                 <div class="col-md-6 mb-3">
-                    {{ cliente_form.celular1.label }}
-                    {{ cliente_form.celular1 }}
+                    {{ funcionario_form.telefone2.label }}
+                    {{ funcionario_form.telefone2 }}
                 </div>
 
 
                 <div class="col-md-6 mb-3">
-                    {{ cliente_form.celular2.label }}
-                    {{ cliente_form.celular2 }}
+                    {{ funcionario_form.celular1.label }}
+                    {{ funcionario_form.celular1 }}
                 </div>
 
 
                 <div class="col-md-6 mb-3">
-                    {{ cliente_form.foto.label }}
-                    {{ cliente_form.foto }}
+                    {{ funcionario_form.celular2.label }}
+                    {{ funcionario_form.celular2 }}
                 </div>
 
 
                 <div class="col-md-6 mb-3">
-                    {{ cliente_form.ativo.label }}
-                    {{ cliente_form.ativo }}
+                    {{ funcionario_form.foto.label }}
+                    {{ funcionario_form.foto }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ funcionario_form.ativo.label }}
+                    {{ funcionario_form.ativo }}
                 </div>
 
                 
                 <span class="spanLocal">LOCALIZAÇÃO</span>
                 <div class="col-md-6 mb-3">
-                    {{ cliente_form.clientePais.label }}
-                    {{ cliente_form.clientePais }}
+                    {{ funcionario_form.funcionarioPais.label }}
+                    {{ funcionario_form.funcionarioPais }}
                 </div>
 
 
                 <div class="col-md-6 mb-3">
-                    {{ cliente_form.clienteEstado.label }}
-                    {{ cliente_form.clienteEstado }}
+                    {{ funcionario_form.funcionarioEstado.label }}
+                    {{ funcionario_form.funcionarioEstado }}
                 </div>
 
 
                 <div class="col-md-6 mb-3">
-                    {{ cliente_form.clienteCidade.label }}
-                    {{ cliente_form.clienteCidade }}
+                    {{ funcionario_form.funcionarioCidade.label }}
+                    {{ funcionario_form.funcionarioCidade }}
                 </div>
                 
             </div><br>
@@ -133,23 +133,23 @@
 {% block scriptPage %}
 <script type='text/javascript'>
     $("select[name=ativo]").toggleClass("custom-select")
-    $("select[name=clienteCidade]").toggleClass("custom-select");
-    $("select[name=clienteEstado]").toggleClass("custom-select");
-    $("select[name=clientePais]").toggleClass("custom-select");
+    $("select[name=funcionarioCidade]").toggleClass("custom-select");
+    $("select[name=funcionarioEstado]").toggleClass("custom-select");
+    $("select[name=funcionarioPais]").toggleClass("custom-select");
     $(function(){
-        var estado = $('select[name=clienteEstado]');
-        var cidade = $('select[name=clienteCidade]');
+        var estado = $('select[name=funcionarioEstado]');
+        var cidade = $('select[name=funcionarioCidade]');
         estado.empty();
         cidade.empty();
         estado.prepend('<option value="Not selected" selected disabled>Selecione o Pais...</option>');
         cidade.prepend('<option value="Not selected" selected disabled>Selecione o Estado...</option>');
-        $('select[name=clientePais]').change(function(){
+        $('select[name=funcionarioPais]').change(function(){
             if('option[value="notValue"]'){
                 estado.empty();
                 cidade.empty();
             }
             if($("#idPais option:selected").text() != ("YOU SHOULD INSERT THE INITIAL VALUE OF THE pais FIELD WHEN IT IS NOT SELECTED")) {
-                var pais_id = $('select[name=clientePais]').val();
+                var pais_id = $('select[name=funcionarioPais]').val();
                 request_url = 'get-estado/' + pais_id;
                 $.ajax({
                     url: request_url,
@@ -166,12 +166,12 @@
                 })
             }
         })
-        $('select[name=clienteEstado]').change(function(){
+        $('select[name=funcionarioEstado]').change(function(){
             if('option[value="notValue"]'){
                 cidade.empty();
             }
             if($("#idEstado option:selected").text() != ("YOU SHOULD INSERT THE INITIAL VALUE OF THE estado FIELD WHEN IT IS NOT SELECTED")) {
-                var estado_id = $('select[name=clienteEstado]').val();
+                var estado_id = $('select[name=funcionarioEstado]').val();
                 request_url = 'get-cidade/' + estado_id;
                 $.ajax({
                     url: request_url,
