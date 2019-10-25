@@ -19,125 +19,130 @@
 
                 <span class="spanLocal">INFORMAÇÕES DO FORNECEDOR</span>
                 <div class="col-md-6 mb-3">
-                    {{ fornecedor_form.razao_social.label }}
-                    {{ fornecedor_form.razao_social }}
+                    {{ cliente_form.nome.label }}
+                    {{ cliente_form.nome }}
                 </div>
 
 
                 <div class="col-md-6 mb-3">
-                    {{ fornecedor_form.cnpj.label }}
-                    {{ fornecedor_form.cnpj }}
+                    {{ cliente_form.sobrenome.label }}
+                    {{ cliente_form.sobrenome }}
                 </div>
 
 
                 <div class="col-md-6 mb-3">
-                    {{ fornecedor_form.ie.label }}
-                    {{ fornecedor_form.ie }}
+                    {{ cliente_form.rg.label }}
+                    {{ cliente_form.rg }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    {{ cliente_form.cpf.label }}
+                    {{ cliente_form.cpf }}
                 </div>
 
 
                 <div class="col-md-6 mb-3">
-                    {{ fornecedor_form.rua.label }}
-                    {{ fornecedor_form.rua }}
+                    {{ cliente_form.rua.label }}
+                    {{ cliente_form.rua }}
                 </div>
 
 
                 <div class="col-md-6 mb-3">
-                    {{ fornecedor_form.bairro.label }}
-                    {{ fornecedor_form.bairro }}
+                    {{ cliente_form.bairro.label }}
+                    {{ cliente_form.bairro }}
                 </div>
 
 
                 <div class="col-md-6 mb-3">
-                    {{ fornecedor_form.cep.label }}
-                    {{ fornecedor_form.cep }}
+                    {{ cliente_form.cep.label }}
+                    {{ cliente_form.cep }}
                 </div>
 
 
                 <div class="col-md-6 mb-3">
-                    {{ fornecedor_form.email.label }}
-                    {{ fornecedor_form.email }}
+                    {{ cliente_form.email.label }}
+                    {{ cliente_form.email }}
                 </div>
 
 
                 <div class="col-md-6 mb-3">
-                    {{ fornecedor_form.numeroLocal.label }}
-                    {{ fornecedor_form.numeroLocal }}
+                    {{ cliente_form.numeroCasa.label }}
+                    {{ cliente_form.numeroCasa }}
                 </div>
 
 
                 <div class="col-md-6 mb-3">
-                    {{ fornecedor_form.telefone1.label }}
-                    {{ fornecedor_form.telefone1 }}
+                    {{ cliente_form.telefone1.label }}
+                    {{ cliente_form.telefone1 }}
                 </div>
 
 
                 <div class="col-md-6 mb-3">
-                    {{ fornecedor_form.telefone2.label }}
-                    {{ fornecedor_form.telefone2 }}
+                    {{ cliente_form.telefone2.label }}
+                    {{ cliente_form.telefone2 }}
                 </div>
 
 
                 <div class="col-md-6 mb-3">
-                    {{ fornecedor_form.celular1.label }}
-                    {{ fornecedor_form.celular1 }}
+                    {{ cliente_form.celular1.label }}
+                    {{ cliente_form.celular1 }}
                 </div>
 
 
                 <div class="col-md-6 mb-3">
-                    {{ fornecedor_form.celular2.label }}
-                    {{ fornecedor_form.celular2 }}
+                    {{ cliente_form.celular2.label }}
+                    {{ cliente_form.celular2 }}
                 </div>
 
 
                 <div class="col-md-6 mb-3 custom-file">
-                    {{ fornecedor_form.foto.label }}
-                    {{ fornecedor_form.foto }}
+                    {{ cliente_form.foto.label }}
+                    {{ cliente_form.foto }}
                 </div>
 
 
                 <div class="col-md-6 mb-3 form-group">
-                    {{ fornecedor_form.ativo.label }}
-                    {{ fornecedor_form.ativo }}
+                    {{ cliente_form.ativo.label }}
+                    {{ cliente_form.ativo }}
                 </div>
 
                 
                 <span class="spanLocal">LOCALIZAÇÃO</span>
                 <div class="col-md-6 mb-3 editlocreadondly">
-                    {{ fornecedor_form.fornecedorPais.label }}
-                    {{ fornecedor_form.fornecedorPais }}
+                    {{ cliente_form.clientePais.label }}
+                    {{ cliente_form.clientePais }}
                 </div>
 
 
                 <div class="col-md-6 mb-3 editlocreadondly">
-                    {{ fornecedor_form.fornecedorEstado.label }}
-                    {{ fornecedor_form.fornecedorEstado }}
+                    {{ cliente_form.clienteEstado.label }}
+                    {{ cliente_form.clienteEstado }}
                 </div>
 
 
                 <div class="col-md-6 mb-3 editlocreadondly">
-                    {{ fornecedor_form.fornecedorCidade.label }}
-                    {{ fornecedor_form.fornecedorCidade }}
+                    {{ cliente_form.clienteCidade.label }}
+                    {{ cliente_form.clienteCidade }}
                 </div>
 
                 
             </div><br>
-            <a class="btn btn-warning button-action" href="{% url 'editar_fornecedor' idFornecedor %}">EDITAR</a>
-            <a class="btn btn-danger button-action" href="{% url 'eliminar_fornecedor' idFornecedor %}">DELETAR</a>
-            <a class="btn btn-primary button-action" href="{% url 'fornecedores' %}">VOLTAR</a>   
+            <a class="btn btn-warning button-action" href="{% url 'editar_cliente' idCliente %}">EDITAR</a>
+            <a class="btn btn-danger button-action" href="{% url 'eliminar_cliente' idCliente %}">DELETAR</a>
+            <a class="btn btn-primary button-action" href="{% url 'clientes' %}">VOLTAR</a>   
 
     </div>
 {% endblock content %}
 {% block scriptPage %}
 <script type='text/javascript'>
     $("select[name=ativo]").attr("disabled", true);
-    $("select[name=fornecedorCidade]").attr("disabled", true);
-    $("select[name=fornecedorEstado]").attr("disabled", true);
-    $("select[name=fornecedorPais]").attr("disabled", true);
+    $("select[name=clienteCidade]").attr("disabled", true);
+    $("select[name=clienteEstado]").attr("disabled", true);
+    $("select[name=clientePais]").attr("disabled", true);
     $("input[name=foto]").attr("disabled", true);
     $("select[name=ativo]").toggleClass("custom-select")
-    $("select[name=fornecedorCidade]").toggleClass("custom-select");
-    $("select[name=fornecedorEstado]").toggleClass("custom-select");
-    $("select[name=fornecedorPais]").toggleClass("custom-select");
+    $("select[name=clienteCidade]").toggleClass("custom-select");
+    $("select[name=clienteEstado]").toggleClass("custom-select");
+    $("select[name=clientePais]").toggleClass("custom-select");
 </script>
 {% endblock scriptPage %}

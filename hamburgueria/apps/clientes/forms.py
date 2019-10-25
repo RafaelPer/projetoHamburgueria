@@ -179,7 +179,8 @@ class ClienteFormReadonly(forms.ModelForm):
                     'placeholder': 'Nome do Cliente',
                     'id': 'id_nome',
                     'maxlength': '100',
-                    'name': 'nome'
+                    'name': 'nome',
+                    'readonly':'readonly',
                 }
             ),
             'sobrenome': forms.TextInput(
@@ -188,7 +189,8 @@ class ClienteFormReadonly(forms.ModelForm):
                     'placeholder': 'Sobrenome do Cliente',
                     'id': 'id_sobrenome',
                     'maxlength': '15',
-                    'name': 'sobrenome'
+                    'name': 'sobrenome',
+                    'readonly':'readonly',
                 }
             ),
             'rg': forms.TextInput(
@@ -197,7 +199,8 @@ class ClienteFormReadonly(forms.ModelForm):
                     'placeholder': 'RG',
                     'id': 'id_rg',
                     'maxlength': '12',
-                    'name': 'rg'
+                    'name': 'rg',
+                    'readonly':'readonly',
                 }
             ),
             'cpf': forms.TextInput(
@@ -206,7 +209,8 @@ class ClienteFormReadonly(forms.ModelForm):
                     'placeholder': 'CPF',
                     'id': 'id_cpf',
                     'maxlength': '12',
-                    'name': 'cpf'
+                    'name': 'cpf',
+                    'readonly':'readonly',
                 }
             ),
             'rua': forms.TextInput(
