@@ -20,9 +20,12 @@ urlpatterns = [
 
     path('estoque/fornecedores/editar_fornecedor/get-estado/<int:idPais>',views.get_estado, name='get_estado'),
     path('estoque/fornecedores/editar_fornecedor/get-cidade/<int:idEstado>',views.get_cidade, name='get_cidade'),
+
+    path('pessoas/clientes/lisclientes/editar_cliente/get-estado/<int:idPais>',views.get_estado, name='get_estado'),
+    path('pessoas/clientes/lisclientes/editar_cliente/get-cidade/<int:idEstado>',views.get_cidade, name='get_cidade'),
     
     path('estoque/', views.listarAdicionaisAndIngredientes, name = 'estoque'),
-    
+
     path('pessoas/', listarFuncionarios, name = 'pessoas'),
 
     #adicional
