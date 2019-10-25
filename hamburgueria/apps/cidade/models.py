@@ -9,6 +9,7 @@ class Cidade(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     cidadeEstado = models.ForeignKey(Estado, on_delete=models.CASCADE)
+    ativo = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = "Cidade"

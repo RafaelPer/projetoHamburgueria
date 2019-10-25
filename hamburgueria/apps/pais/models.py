@@ -7,6 +7,7 @@ class Pais(models.Model):
     nome = models.CharField(max_length = 100, blank = False, null = False)
     descricao = models.TextField(blank = False, null = False, default='texto')
     sigla = models.CharField(max_length = 5, blank = False, null = False)
+    ativo = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

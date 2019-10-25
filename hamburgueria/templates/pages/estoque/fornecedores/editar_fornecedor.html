@@ -137,8 +137,8 @@
         var cidade = $('select[name=fornecedorCidade]');
         estado.empty();
         cidade.empty();
-        estado.prepend('<option value="{{ fornecedor_form.fornecedorEstado.value }}" selected disabled>{% for estado in estados %}{% if estado.idEstado == fornecedor_form.fornecedorEstado.value %}{{ estado.nome }}{% endif %}{% endfor %}</option>');
-        cidade.prepend('<option value="{{ fornecedor_form.fornecedorCidade.value }}" selected disabled>{% for cidade in cidades %}{% if cidade.idCidade == fornecedor_form.fornecedorCidade.value %}{{ cidade.nome }}{% endif %}{% endfor %}</option>');
+        estado.prepend('<option value="{{ fornecedor_form.fornecedorEstado.value }}" selected>{% for estado in estados %}{% if estado.idEstado == fornecedor_form.fornecedorEstado.value %}{{ estado.nome }}{% endif %}{% endfor %}</option>');
+        cidade.prepend('<option value="{{ fornecedor_form.fornecedorCidade.value }}" selected>{% for cidade in cidades %}{% if cidade.idCidade == fornecedor_form.fornecedorCidade.value %}{{ cidade.nome }}{% endif %}{% endfor %}</option>');
         $('select[name=fornecedorPais]').change(function(){
             if('option[value="notValue"]'){
                 estado.empty();

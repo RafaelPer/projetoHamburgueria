@@ -32,6 +32,7 @@ class Lanche(models.Model):
     lancheTamanhoLanche = models.ForeignKey(tamanhoLanche, on_delete=models.CASCADE)
     foto = models.ImageField(upload_to = user_directory_path, default = 'sem-imagem-avatar.png')
     lancheIngrediente = models.ManyToManyField(Ingrediente)
+    estado = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

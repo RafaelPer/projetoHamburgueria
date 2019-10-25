@@ -5,12 +5,13 @@ from .models import Ingrediente
 class IngredienteForm(forms.ModelForm):
     class Meta:
         model = Ingrediente
-        fields = ['nome', 'preco', 'quantidade', 'unidade', 'descricao', 'ingredienteFornecedor']
+        fields = ['nome', 'preco', 'quantidade', 'unidade', 'estado', 'descricao', 'ingredienteFornecedor']
         labels = {
             'nome': 'Nome do Ingrediente',
             'preco': 'Preço do Ingrediente',
             'quantidade': 'Quantidade',
             'unidade': 'Unidade',
+            'estado': 'Esta Ativo?',
             'descricao': 'Breve Descrição',
             'ingredienteFornecedor': 'Fornecedores do Ingrediente',
         }
@@ -67,12 +68,13 @@ class IngredienteForm(forms.ModelForm):
 class IngredienteFormReadonly(forms.ModelForm):
     class Meta:
         model = Ingrediente
-        fields = ['nome', 'preco', 'quantidade', 'unidade', 'descricao', 'ingredienteFornecedor']
+        fields = ['nome', 'preco', 'quantidade', 'unidade', 'estado', 'descricao', 'ingredienteFornecedor']
         labels = {
             'nome': 'Nome do Ingrediente',
             'preco': 'Preço do Ingrediente',
             'quantidade': 'Quantidade',
             'unidade': 'Unidade',
+            'estado': 'Esta Ativo?',
             'descricao': 'Breve Descrição',
             'ingredienteFornecedor': 'Fornecedores do Ingrediente',
         }

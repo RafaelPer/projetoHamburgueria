@@ -41,6 +41,7 @@ class Bebida(models.Model):
     bebidaTamanhoBebida = models.ForeignKey(tamanhoBebida, on_delete=models.CASCADE)
     quantidade = models.DecimalField(max_digits=4, decimal_places=4, blank = False, null = False, default= 0.0000)
     foto = models.ImageField(upload_to = user_directory_path, default = 'sem-imagem-avatar.png')
+    estado = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

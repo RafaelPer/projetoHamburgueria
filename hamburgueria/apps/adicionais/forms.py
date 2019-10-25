@@ -5,12 +5,13 @@ from .models import Adicional
 class AdicionalForm(forms.ModelForm):
     class Meta:
         model = Adicional
-        fields = ['nome', 'preco', 'quantidade', 'unidade', 'descricao', 'adicionalFornecedor']
+        fields = ['nome', 'preco', 'quantidade', 'unidade', 'estado', 'descricao', 'adicionalFornecedor']
         labels = {
             'nome': 'Nome do Adicional',
             'preco': 'Preço do Adicional',
             'quantidade': 'Quantidade',
             'unidade': 'Unidade',
+            'estado': 'Esta Ativo?',
             'descricao': 'Breve Descrição',
             'adicionalFornecedor': 'Fornecedores do Adicional',
         }
@@ -67,12 +68,13 @@ class AdicionalForm(forms.ModelForm):
 class AdicionalFormReadonly(forms.ModelForm):
     class Meta:
         model = Adicional
-        fields = ['nome', 'preco', 'quantidade', 'unidade', 'descricao', 'adicionalFornecedor']
+        fields = ['nome', 'preco', 'quantidade', 'unidade', 'estado', 'descricao', 'adicionalFornecedor']
         labels = {
             'nome': 'Nome do Adicional',
             'preco': 'Preço do Adicional',
             'quantidade': 'Quantidade',
             'unidade': 'Unidade',
+            'estado': 'Esta Ativo?',
             'descricao': 'Breve Descrição',
             'adicionalFornecedor': 'Fornecedores do Adicional',
         }

@@ -17,7 +17,7 @@ class ListarFornecedor(ListView):
     model = Fornecedor
     template_name = 'pages/estoque/fornecedores/fornecedores.html'
     context_object_name = 'fornecedores'
-    queryset = Fornecedor.objects.filter(ativo = 'Sim')
+    #queryset = Fornecedor.objects.filter(ativo = 'Sim')
 
 class CriarFornecedor(CreateView):
     model = Fornecedor

@@ -8,6 +8,7 @@ class Estado(models.Model):
     descricao = models.TextField(blank = False, null = False, default='texto')
     uf = models.CharField(max_length = 3, blank = False, null = False)
     created_at = models.DateTimeField(auto_now_add=True)
+    ativo = models.BooleanField(default=True)
     updated_at = models.DateTimeField(auto_now=True)
     estadoPais = models.ForeignKey(Pais, on_delete=models.CASCADE)
 

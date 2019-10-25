@@ -33,3 +33,10 @@
     color: black; 
     font-size: 18pt;
 }
+
+.divCheckBox{
+    border: 2px solid #cccccc;
+    padding: 10px; 
+    background-color: rgb(238, 238, 238); 
+    color: black;
+}

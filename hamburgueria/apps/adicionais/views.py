@@ -14,7 +14,7 @@ class ListarAdicionais(ListView):
     model = Adicional
     template_name = 'pages/estoque/estoque.html'
     context_object_name = 'adicionais'
-    queryset = Adicional.objects.filter(estado = True)
+    #queryset = Adicional.objects.filter(estado = True)
 
 class CriarAdicional(CreateView):
     model = Adicional
@@ -57,6 +57,7 @@ def criarAdicional(request):
             return redirect('estoque')
     else:
         adicional_form = AdicionalForm()
+    print(adicional_form)
     return render(request, 'pages/estoque/adicionais/novo_adicional.html', {'adicional_form':adicional_form})
 
 def listarAdicional(request):

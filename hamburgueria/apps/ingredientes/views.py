@@ -14,7 +14,7 @@ class ListarIngredientes(ListView):
     model = Ingrediente
     template_name = 'pages/estoque/estoque.html'
     context_object_name = 'ingredientes'
-    queryset = Ingrediente.objects.filter(estado = True)
+    #queryset = Ingrediente.objects.filter(estado = True)
 
 class CriarIngrediente(CreateView):
     model = Ingrediente
