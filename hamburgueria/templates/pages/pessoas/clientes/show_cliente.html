@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
-{% block title %}VISUALIZAÇÃO DE FORNECEDOR{% endblock title %}
+{% block title %}VISUALIZAÇÃO DE CLIENTE{% endblock title %}
 
 {% block cssPage %}
-    <link rel="stylesheet" href="{% static 'pages/estoque/fornecedores/css/stylesForn.css' %}">
+    <link rel="stylesheet" href="{% static 'pages/pessoas/clientes/css/stylesCli.css' %}">
 {% endblock cssPage %}
 
 {% block menu %}
 {% endblock menu %}
 
 {% block content %}
-    <div class="formNovoForn">
-        <h1 class="h1 text-center">TELA DE VISUALIZAÇÃO DE FORNECEDOR</h1>
+    <div class="formNovoCli">
+        <h1 class="h1 text-center">TELA DE VISUALIZAÇÃO DE CLIENTE</h1>
             {% csrf_token %}
             <!--{{ adicional_form.as_p }}-->
             <div class="form-row">
