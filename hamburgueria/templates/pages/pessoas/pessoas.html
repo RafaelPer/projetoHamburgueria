@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}LISTA DE FUNCIONARIOS{% endblock title %}
+
+{% block cssPage %}
+    <link rel="stylesheet" href="{% static 'pages/pessoas/funcionarios/css/stylesFunc.css' %}">
+{% endblock cssPage %}
+
+{% block menu %}
+{% endblock menu %}
+
+{% block content %}
+    <h1 class="h1 text-center">LISTA DE FUNCIONARIOS</h1>
+    <div class="search">
+        <input type="text" class="form-control" id="search" placeholder="Area de Pesquisa" name="search" required><br>
+    </div>
+    <div>
+        <a class="btn btn-secondary button-estoque" href="{% url 'novo_funcionario' %}">NOVO FUNCIONARIO</a>
+        <a class="btn btn-secondary button-estoque" href="{% url 'clientes' %}">CLIENTES</a>
+    </div>
+    <div class="formNovofunc">
+        <div class="adicionais-div estoque-div">
+            <h2 class="h2 text-center">FUNCIONARIOS CADASTRADOS</h2>
+            {% if funcionarios %}
+                <table class="table text-center">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">NOME</th>
+                            <th scope="col">SOBRENOME</th>
+                            <th scope="col">RG</th>
+                            <th scope="col">CPF</th>
+                            <th scope="col">CIDADE</th>
+                            <th scope="col">AÇÕES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for funcionario in funcionarios %}
+                            <tr>
+                                <th scope="row">{{ funcionario.idFuncionario }}</th>
+                                <th>{{ funcionario.nome }}</th>
+                                <th>{{ funcionario.sobrenome }}</th>
+                                <th>{{ funcionario.rg }}</th>
+                                <th>{{ funcionario.cpf }}</th>
+                                <th>{{ funcionario.clienteCidade }}</th>
+                                <th>
+                                    <a class="btn btn-info col-md-4 mb-3" href="{% url 'show_funcionario' funcionario.idFuncionario %}">VISUALIZAR</a>
+                                    <a class="btn btn-warning col-md-3 mb-3" href="{% url 'editar_funcionario' funcionario.idFuncionario %}">EDITAR</a>
+                                    <a class="btn btn-danger col-md-4 mb-3" href="{% url 'eliminar_funcionario' funcionario.idFuncionario %}">DELETAR</a>
+                                </th>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <h3 class="h3 text-center">Não existe funcionarios registrados</h3>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}

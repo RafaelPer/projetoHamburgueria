@@ -4,29 +4,39 @@ from apps.adicionais.views import criarAdicional, showAdicional, editarAdicional
 from apps.ingredientes.views import criarIngrediente, showIngrediente, editarIngrediente, eliminarIngrediente
 from apps.fornecedores.views import criarFornecedor, showFornecedor, listarFornecedores, editarFornecedor, eliminarFornecedor
 from apps.clientes.views import criarCliente, showCliente, listarClientes, editarCliente, eliminarCliente
-from apps.funcionarios.views import listarFuncionarios
+from apps.funcionarios.views import  criarFuncionario, showFuncionario, listarFuncionarios, editarFuncionario, eliminarFuncionario
 
 urlpatterns = [
     path('homepage/', views.Home, name = 'index'),
 
     #estoque e pessoas
     #path('estoque/', ListarAdicionais.as_view(), name = 'estoque'),
+    path('estoque/', views.listarAdicionaisAndIngredientes, name = 'estoque'),
+    path('pessoas/', listarFuncionarios, name = 'pessoas'),
 
+    #get estado e cidade fornecedores
     path('estoque/fornecedores/get-estado/<int:idPais>',views.get_estado, name='get_estado'),
     path('estoque/fornecedores/get-cidade/<int:idEstado>',views.get_cidade, name='get_cidade'),
 
-    path('pessoas/clientes/lisclientes/get-estado/<int:idPais>',views.get_estado, name='get_estado'),
-    path('pessoas/clientes/lisclientes/get-cidade/<int:idEstado>',views.get_cidade, name='get_cidade'),
+    #get estado e cidade listclientes
+    path('pessoas/clientes/listclientes/get-estado/<int:idPais>',views.get_estado, name='get_estado'),
+    path('pessoas/clientes/listclientes/get-cidade/<int:idEstado>',views.get_cidade, name='get_cidade'),
 
+    #get estado e cidade pessoas
+    path('pessoas/get-estado/<int:idPais>',views.get_estado, name='get_estado'),
+    path('pessoas/get-cidade/<int:idEstado>',views.get_cidade, name='get_cidade'),
+
+    #get estado e cidade fornecedores/editar_fornecedor
     path('estoque/fornecedores/editar_fornecedor/get-estado/<int:idPais>',views.get_estado, name='get_estado'),
     path('estoque/fornecedores/editar_fornecedor/get-cidade/<int:idEstado>',views.get_cidade, name='get_cidade'),
 
-    path('pessoas/clientes/lisclientes/editar_cliente/get-estado/<int:idPais>',views.get_estado, name='get_estado'),
-    path('pessoas/clientes/lisclientes/editar_cliente/get-cidade/<int:idEstado>',views.get_cidade, name='get_cidade'),
-    
-    path('estoque/', views.listarAdicionaisAndIngredientes, name = 'estoque'),
+    #get estado e cidade clientes/listclientes/editar_cliente/
+    path('pessoas/clientes/listclientes/editar_cliente/get-estado/<int:idPais>',views.get_estado, name='get_estado'),
+    path('pessoas/clientes/listclientes/editar_cliente/get-cidade/<int:idEstado>',views.get_cidade, name='get_cidade'),
 
-    path('pessoas/', listarFuncionarios, name = 'pessoas'),
+    #get estado e cidade pessoas/editar_funcionario/
+    path('pessoas/editar_funcionario/get-estado/<int:idPais>',views.get_estado, name='get_estado'),
+    path('pessoas/editar_funcionario/get-cidade/<int:idEstado>',views.get_cidade, name='get_cidade'),
 
     #adicional
     path('estoque/adicionais/novo_adicional', criarAdicional, name = 'novo_adicional'),
@@ -49,9 +59,16 @@ urlpatterns = [
 
     #clientes
     path('pessoas/clientes/listclientes', listarClientes, name = 'clientes'),
-    path('pessoas/clientes/lisclientes/novo_cliente', criarCliente, name = 'novo_cliente'),
-    path('pessoas/clientes/lisclientes/editar_cliente/<int:idCliente>', editarCliente, name = 'editar_cliente'),
-    path('pessoas/clientes/lisclientes/mostrar_cliente/<int:idCliente>', showCliente, name = 'show_cliente'),
-    path('pessoas/clientes/lisclientes/eliminar_cliente/<int:idCliente>', eliminarCliente, name = 'eliminar_cliente'),
+    path('pessoas/clientes/listclientes/novo_cliente', criarCliente, name = 'novo_cliente'),
+    path('pessoas/clientes/listclientes/editar_cliente/<int:idCliente>', editarCliente, name = 'editar_cliente'),
+    path('pessoas/clientes/listclientes/mostrar_cliente/<int:idCliente>', showCliente, name = 'show_cliente'),
+    path('pessoas/clientes/listclientes/eliminar_cliente/<int:idCliente>', eliminarCliente, name = 'eliminar_cliente'),
+
+    #funcionarios
+    path('pessoas/', listarFuncionarios, name = 'funcionarios'),
+    path('pessoas/novo_funcionario', criarFuncionario, name = 'novo_funcionario'),
+    path('pessoas/editar_funcionario/<int:idFuncionario>', editarFuncionario, name = 'editar_funcionario'),
+    path('pessoas/mostrar_funcionario/<int:idFuncionario>', showFuncionario, name = 'show_funcionario'),
+    path('pessoas/eliminar_funcionario/<int:idFuncionario>', eliminarFuncionario, name = 'eliminar_funcionario'),
     
 ]

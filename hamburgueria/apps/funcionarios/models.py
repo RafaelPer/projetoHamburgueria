@@ -55,7 +55,7 @@ class Funcionario(models.Model):
     funcionarioEstado = models.ForeignKey(Estado, on_delete=models.CASCADE)
     funcionarioPais = models.ForeignKey(Pais, on_delete=models.CASCADE)
     funcionarioTipoFuncionario = models.ForeignKey(tipoFuncionario, on_delete=models.CASCADE)
-    senha = models.CharField(max_length=50, blank = False, null = False, default='')
+    #senha = models.CharField(max_length=50, blank = False, null = False, default='')
     data_admissao = models.DateTimeField(auto_now=False, auto_now_add=False, default=datetime.now)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

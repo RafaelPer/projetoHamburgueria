@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}EDIÇÃO DE CLIENTE{% endblock title %}
+
+{% block cssPage %}
+    <link rel="stylesheet" href="{% static 'pages/pessoas/clientes/css/stylesCli.css' %}">
+{% endblock cssPage %}
+
+{% block menu %}
+{% endblock menu %}
+
+{% block content %}
+    <div class="formNovoCli">
+        <h1 class="h1 text-center">TELA DE EDIÇÃO DE CLIENTE</h1>
+        <form method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+            <!--{{ adicional_form.as_p }}-->
+            <div class="form-row">
+                <span class="spanLocal">INFORMAÇÕES DO CLIENTE</span>
+                <div class="col-md-6 mb-3">
+                    {{ cliente_form.nome.label }}
+                    {{ cliente_form.nome }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ cliente_form.sobrenome.label }}
+                    {{ cliente_form.sobrenome }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ cliente_form.rg.label }}
+                    {{ cliente_form.rg }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    {{ cliente_form.cpf.label }}
+                    {{ cliente_form.cpf }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ cliente_form.rua.label }}
+                    {{ cliente_form.rua }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ cliente_form.bairro.label }}
+                    {{ cliente_form.bairro }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ cliente_form.cep.label }}
+                    {{ cliente_form.cep }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ cliente_form.email.label }}
+                    {{ cliente_form.email }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ cliente_form.numeroCasa.label }}
+                    {{ cliente_form.numeroCasa }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ cliente_form.telefone1.label }}
+                    {{ cliente_form.telefone1 }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ cliente_form.telefone2.label }}
+                    {{ cliente_form.telefone2 }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ cliente_form.celular1.label }}
+                    {{ cliente_form.celular1 }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ cliente_form.celular2.label }}
+                    {{ cliente_form.celular2 }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ cliente_form.foto.label }}
+                    {{ cliente_form.foto }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ cliente_form.ativo.label }}
+                    {{ cliente_form.ativo }}
+                </div>
+
+                
+                <span class="spanLocal">LOCALIZAÇÃO</span>
+                <div class="col-md-6 mb-3 editLoc">
+                    {{ cliente_form.clientePais.label }}
+                    {{ cliente_form.clientePais }}
+                </div>
+
+
+                <div class="col-md-6 mb-3 editLoc">
+                    {{ cliente_form.clienteEstado.label }}
+                    {{ cliente_form.clienteEstado }}
+                </div>
+
+
+                <div class="col-md-6 mb-3 editLoc">
+                    {{ cliente_form.clienteCidade.label }}
+                    {{ cliente_form.clienteCidade }}
+                </div>
+
+            </div><br>
+            <button class="btn btn-success" type="submit">FINALIZAR EDIÇÃO</button>
+        </form>
+    </div>
+{% endblock content %}
+{% block scriptPage %}
+<script type='text/javascript'>
+    $("select[name=ativo]").toggleClass("custom-select")
+    $("select[name=clienteCidade]").toggleClass("custom-select");
+    $("select[name=clienteEstado]").toggleClass("custom-select");
+    $("select[name=clientePais]").toggleClass("custom-select");
+    //$('select[name=clienteCidade] <option value="{{ cliente_form.clienteEstado.value }}" selected disabled>{% for estado in estados %}{% if estado.idEstado == cliente_form.clienteEstado.value %}{{ estado.nome }}{% endif %}{% endfor %}</option>');
+    $(function(){
+        var estado = $('select[name=clienteEstado]');
+        var cidade = $('select[name=clienteCidade]');
+        estado.empty();
+        cidade.empty();
+        estado.prepend('<option value="{{ cliente_form.clienteEstado.value }}" selected>{% for estado in estados %}{% if estado.idEstado == cliente_form.clienteEstado.value %}{{ estado.nome }}{% endif %}{% endfor %}</option>');
+        cidade.prepend('<option value="{{ cliente_form.clienteCidade.value }}" selected>{% for cidade in cidades %}{% if cidade.idCidade == cliente_form.clienteCidade.value %}{{ cidade.nome }}{% endif %}{% endfor %}</option>');
+        $('select[name=clientePais]').change(function(){
+            if('option[value="notValue"]'){
+                estado.empty();
+                cidade.empty();
+            }
+            if($("#idPais option:selected").text() != ("YOU SHOULD INSERT THE INITIAL VALUE OF THE pais FIELD WHEN IT IS NOT SELECTED")) {
+                var pais_id = $('select[name=clientePais]').val();
+                request_url = 'get-estado/' + pais_id;
+                $.ajax({
+                    url: request_url,
+                    type: "GET",
+                    success: function(data){
+                        estado.empty();
+                        cidade.empty();
+                        estado.prepend('<option value="notValue" selected>---------</option>');
+                        $.each(data, function(key, value){
+                            console.log("Estado: ",data, key, value)
+                            estado.append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    }
+                })
+            }
+        })
+        $('select[name=clienteEstado]').change(function(){
+            if('option[value="notValue"]'){
+                cidade.empty();
+            }
+            if($("#idEstado option:selected").text() != ("YOU SHOULD INSERT THE INITIAL VALUE OF THE estado FIELD WHEN IT IS NOT SELECTED")) {
+                var estado_id = $('select[name=clienteEstado]').val();
+                request_url = 'get-cidade/' + estado_id;
+                $.ajax({
+                    url: request_url,
+                    type: "GET",
+                    success: function(data){
+                        cidade.empty();
+                        cidade.prepend('<option value="notValue" selected>---------</option>');
+                        $.each(data, function(key, value){
+                            console.log("Cidade: ",data, key, value)
+                            cidade.append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    }
+                })
+            }
+        })
+    });
+</script>
+{% endblock scriptPage %}
