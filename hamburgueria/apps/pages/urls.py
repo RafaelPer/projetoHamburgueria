@@ -11,11 +11,18 @@ urlpatterns = [
 
     #estoque e pessoas
     #path('estoque/', ListarAdicionais.as_view(), name = 'estoque'),
+
     path('estoque/fornecedores/get-estado/<int:idPais>',views.get_estado, name='get_estado'),
     path('estoque/fornecedores/get-cidade/<int:idEstado>',views.get_cidade, name='get_cidade'),
+
+    path('pessoas/clientes/lisclientes/get-estado/<int:idPais>',views.get_estado, name='get_estado'),
+    path('pessoas/clientes/lisclientes/get-cidade/<int:idEstado>',views.get_cidade, name='get_cidade'),
+
     path('estoque/fornecedores/editar_fornecedor/get-estado/<int:idPais>',views.get_estado, name='get_estado'),
     path('estoque/fornecedores/editar_fornecedor/get-cidade/<int:idEstado>',views.get_cidade, name='get_cidade'),
+    
     path('estoque/', views.listarAdicionaisAndIngredientes, name = 'estoque'),
+    
     path('pessoas/', listarFuncionarios, name = 'pessoas'),
 
     #adicional
