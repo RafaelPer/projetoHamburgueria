@@ -2,6 +2,13 @@
     font-size: 20pt;
 }
 
+.h1 {
+    font-size: 25pt;
+    background-color: rgb(194, 19, 10);
+    color: rgb(238, 238, 238);
+    padding: 5px;
+}
+
 .h3{
     font-size: 16pt;
 }
@@ -27,4 +34,11 @@
 
 .ingredientes-div {
     margin-top: 25px;
+}
+
+.formEstoque {
+    box-shadow: 2px 2px 2px #cccccc;
+    margin-top: 10px;
+    border: 2px solid #cccccc;
+    padding: 10px;
 }

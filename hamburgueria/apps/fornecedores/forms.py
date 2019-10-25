@@ -158,6 +158,8 @@ class FornecedorFormReadonly(forms.ModelForm):
             'foto': 'Foto',
             'ativo': 'Esta Ativo?',
             'fornecedorCidade': 'Cidade',
+            'fornecedorEstado': 'Estado',
+            'fornecedorPais': 'Pais',
         }
         widgets = {
             'razao_social': forms.TextInput(

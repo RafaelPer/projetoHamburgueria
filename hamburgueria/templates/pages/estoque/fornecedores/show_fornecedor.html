@@ -11,7 +11,7 @@
 {% endblock menu %}
 
 {% block content %}
-    <div>
+    <div class="formNovoForn">
         <h1 class="h1 text-center">TELA DE VISUALIZAÇÃO DE FORNECEDOR</h1>
             {% csrf_token %}
             <!--{{ adicional_form.as_p }}-->
@@ -21,142 +21,106 @@
                 <div class="col-md-6 mb-3">
                     {{ fornecedor_form.razao_social.label }}
                     {{ fornecedor_form.razao_social }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
 
                 <div class="col-md-6 mb-3">
                     {{ fornecedor_form.cnpj.label }}
                     {{ fornecedor_form.cnpj }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
 
                 <div class="col-md-6 mb-3">
                     {{ fornecedor_form.ie.label }}
                     {{ fornecedor_form.ie }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
 
                 <div class="col-md-6 mb-3">
                     {{ fornecedor_form.rua.label }}
                     {{ fornecedor_form.rua }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
 
                 <div class="col-md-6 mb-3">
                     {{ fornecedor_form.bairro.label }}
                     {{ fornecedor_form.bairro }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
 
                 <div class="col-md-6 mb-3">
                     {{ fornecedor_form.cep.label }}
                     {{ fornecedor_form.cep }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
 
                 <div class="col-md-6 mb-3">
                     {{ fornecedor_form.email.label }}
                     {{ fornecedor_form.email }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
 
                 <div class="col-md-6 mb-3">
                     {{ fornecedor_form.numeroLocal.label }}
                     {{ fornecedor_form.numeroLocal }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
 
                 <div class="col-md-6 mb-3">
                     {{ fornecedor_form.telefone1.label }}
                     {{ fornecedor_form.telefone1 }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
 
                 <div class="col-md-6 mb-3">
                     {{ fornecedor_form.telefone2.label }}
                     {{ fornecedor_form.telefone2 }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
 
                 <div class="col-md-6 mb-3">
                     {{ fornecedor_form.celular1.label }}
                     {{ fornecedor_form.celular1 }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
 
                 <div class="col-md-6 mb-3">
                     {{ fornecedor_form.celular2.label }}
                     {{ fornecedor_form.celular2 }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
 
-                <div class="col-md-6 mb-3">
+                <div class="col-md-6 mb-3 custom-file">
                     {{ fornecedor_form.foto.label }}
                     {{ fornecedor_form.foto }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
 
-                <div class="col-md-6 mb-3">
+                <div class="col-md-6 mb-3 form-group">
                     {{ fornecedor_form.ativo.label }}
                     {{ fornecedor_form.ativo }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
                 
                 <span class="spanLocal">LOCALIZAÇÃO</span>
                 <div class="col-md-6 mb-3 editlocreadondly">
                     {{ fornecedor_form.fornecedorPais.label }}
-                    <input type="text" value="{% for pais in paises %}{% if pais.idPais == fornecedor_form.fornecedorPais.value %}{{ pais.nome }}{% endif %}{% endfor %}" class="form-control" id="" maxlength="100" name="" readonly>
+                    {{ fornecedor_form.fornecedorPais }}
                 </div>
+
+
                 <div class="col-md-6 mb-3 editlocreadondly">
                     {{ fornecedor_form.fornecedorEstado.label }}
-                    <input type="text" value="{% for estado in estados %}{% if estado.idEstado == fornecedor_form.fornecedorEstado.value %}{{ estado.nome }}{% endif %}{% endfor %}" class="form-control" id="" maxlength="100" name="" readonly>
+                    {{ fornecedor_form.fornecedorEstado }}
                 </div>
+
+
                 <div class="col-md-6 mb-3 editlocreadondly">
                     {{ fornecedor_form.fornecedorCidade.label }}
-                    <input type="text" value="{% for cidade in cidades %}{% if cidade.idCidade == fornecedor_form.fornecedorCidade.value %}{{ cidade.nome }}{% endif %}{% endfor %}" class="form-control" id="" maxlength="100" name="" readonly>
+                    {{ fornecedor_form.fornecedorCidade }}
                 </div>
+
+                
             </div><br>
             <a class="btn btn-warning button-action" href="{% url 'editar_fornecedor' idFornecedor %}">EDITAR</a>
             <a class="btn btn-danger button-action" href="{% url 'eliminar_fornecedor' idFornecedor %}">DELETAR</a>
@@ -166,13 +130,14 @@
 {% endblock content %}
 {% block scriptPage %}
 <script type='text/javascript'>
-	$("#buttonEditLoc").click(function () {
-        $(".buttonEditLoc").hide();
-        $(".editlocreadondly").hide();
-        $(".editLoc").show();
-        $(".buttoncancelEditLoc").show();
-    });
     $("select[name=ativo]").attr("disabled", true);
+    $("select[name=fornecedorCidade]").attr("disabled", true);
+    $("select[name=fornecedorEstado]").attr("disabled", true);
+    $("select[name=fornecedorPais]").attr("disabled", true);
     $("input[name=foto]").attr("disabled", true);
+    $("select[name=ativo]").toggleClass("custom-select")
+    $("select[name=fornecedorCidade]").toggleClass("custom-select");
+    $("select[name=fornecedorEstado]").toggleClass("custom-select");
+    $("select[name=fornecedorPais]").toggleClass("custom-select");
 </script>
 {% endblock scriptPage %}

@@ -11,68 +11,45 @@
 {% endblock menu %}
 
 {% block content %}
-    <div>
+    <div class="formNovoAd">
         <h1 class="h1 text-center">TELA DE EDIÇÃO DE ADICIONAL</h1>
-        <form method="POST" class="needs-validation" class="formNovoAd" novalidate>
+        <form method="POST" class="needs-validation" novalidate>
             {% csrf_token %}
             <!--{{ adicional_form.as_p }}-->
             <div class="form-row">
-
+                <span class="spanAd">INFORMAÇÕES DO ADICIONAL</span>
                 <div class="col-md-5 mb-3">
                     {{ adicional_form.nome.label }}
                     {{ adicional_form.nome }}
-                    <div class="valid-feedback">
-                        Campo Esta Bom!
-                    </div>
-                    <div class="invalid-feedback">
-                        Por Favor Escreva um Nome!!!
-                    </div>
                 </div>
 
                 
                 <div class="col-md-7 mb-3">
                     {{ adicional_form.preco.label }}
-                    <div class="input-group">
-                        {{ adicional_form.preco }}
-                        <div class="invalid-feedback">
-                            Informe o Preço do Adicional!!!
-                        </div>
-                    </div>
+                    {{ adicional_form.preco }}
                 </div>
                 
 
                 <div class="col-md-5 mb-3 ">
                     {{ adicional_form.quantidade.label }}
                     {{ adicional_form.quantidade }}
-                    <div class="invalid-feedback">
-                        Informe a Quantidade de Produtos!!!
-                    </div>
                 </div>
                 
 
                 <div class="col-md-7 mb-3">
                     {{ adicional_form.unidade.label }}
                     {{ adicional_form.unidade }}
-                    <div class="invalid-feedback">
-                        Entre Com Uma Unidade!!!
-                    </div>
                 </div>
 
 
                 <div class="divDesc">
                     {{ adicional_form.descricao.label }}
                     {{ adicional_form.descricao }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
                 <div class="divDesc">
                     {{ adicional_form.adicionalFornecedor.label }}
                     {{ adicional_form.adicionalFornecedor }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
                 

@@ -94,18 +94,18 @@ WSGI_APPLICATION = 'hamburgueria.wsgi.application'
 
 DATABASES = {
 
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
     #'default': {
-    #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #    'NAME': 'hamburgueria',
-    #    'USER': 'postgres',
-    #    'PASSWORD': 'RaX3)9fAx#0(',
-    #    'HOTS': 'localhost',
-    #    'PORT': 5432,
+    #    'ENGINE': 'django.db.backends.sqlite3',
+    #    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     #}
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'hamburgueria',
+        'USER': 'postgres',
+        'PASSWORD': 'RaX3)9fAx#0(',
+        'HOTS': 'localhost',
+        'PORT': 5432,
+    }
 }
 
 

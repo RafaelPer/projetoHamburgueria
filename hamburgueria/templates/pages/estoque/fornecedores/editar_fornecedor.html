@@ -11,189 +11,113 @@
 {% endblock menu %}
 
 {% block content %}
-    <div>
+    <div class="formNovoForn">
         <h1 class="h1 text-center">TELA DE EDIÇÃO DE FORNECEDOR</h1>
         <form method="POST" class="needs-validation" class="formNovoForn" enctype="multipart/form-data" novalidate>
             {% csrf_token %}
             <!--{{ adicional_form.as_p }}-->
             <div class="form-row">
-                <span class="spanLocal" style="width: 100%; border-bottom: 2px solid #7e7e7e; margin: 10px; text-align: center; color: black; font-size: 18pt;">INFORMAÇÕES DO FORNECEDOR</span>
+                <span class="spanLocal">INFORMAÇÕES DO FORNECEDOR</span>
                 <div class="col-md-6 mb-3">
                     {{ fornecedor_form.razao_social.label }}
                     {{ fornecedor_form.razao_social }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
 
                 <div class="col-md-6 mb-3">
                     {{ fornecedor_form.cnpj.label }}
                     {{ fornecedor_form.cnpj }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
 
                 <div class="col-md-6 mb-3">
                     {{ fornecedor_form.ie.label }}
                     {{ fornecedor_form.ie }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
 
                 <div class="col-md-6 mb-3">
                     {{ fornecedor_form.rua.label }}
                     {{ fornecedor_form.rua }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
 
                 <div class="col-md-6 mb-3">
                     {{ fornecedor_form.bairro.label }}
                     {{ fornecedor_form.bairro }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
 
                 <div class="col-md-6 mb-3">
                     {{ fornecedor_form.cep.label }}
                     {{ fornecedor_form.cep }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
 
                 <div class="col-md-6 mb-3">
                     {{ fornecedor_form.email.label }}
                     {{ fornecedor_form.email }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
 
                 <div class="col-md-6 mb-3">
                     {{ fornecedor_form.numeroLocal.label }}
                     {{ fornecedor_form.numeroLocal }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
 
                 <div class="col-md-6 mb-3">
                     {{ fornecedor_form.telefone1.label }}
                     {{ fornecedor_form.telefone1 }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
 
                 <div class="col-md-6 mb-3">
                     {{ fornecedor_form.telefone2.label }}
                     {{ fornecedor_form.telefone2 }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
 
                 <div class="col-md-6 mb-3">
                     {{ fornecedor_form.celular1.label }}
                     {{ fornecedor_form.celular1 }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
 
                 <div class="col-md-6 mb-3">
                     {{ fornecedor_form.celular2.label }}
                     {{ fornecedor_form.celular2 }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
 
                 <div class="col-md-6 mb-3">
                     {{ fornecedor_form.foto.label }}
                     {{ fornecedor_form.foto }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
 
                 <div class="col-md-6 mb-3">
                     {{ fornecedor_form.ativo.label }}
                     {{ fornecedor_form.ativo }}
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
                 </div>
 
                 
                 <span class="spanLocal">LOCALIZAÇÃO</span>
-                <a class="btn btn-warning buttonEditLoc" id="buttonEditLoc">EDITAR LOCALIZAÇÃO</a>
-                <a class="btn btn-danger buttoncancelEditLoc" id="buttoncancelEditLoc" style="display: none;">CANCELAR EDIÇÃO</a>
-                <div class="col-md-6 mb-3 editLoc" style="display: none;">
+                <div class="col-md-6 mb-3 editLoc">
                     {{ fornecedor_form.fornecedorPais.label }}
-                    <select class="form-control" name="fornecedorPais" required id="id_fornecedorPais">
-                        <option value="notValue">---------</option>
-                        {% for s in paises %}
-                            <option value="{{ s.idPais }}">{{ s }}</option>
-                        {% endfor %}
-                    </select>
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
+                    {{ fornecedor_form.fornecedorPais }}
                 </div>
 
 
-                <div class="col-md-6 mb-3 editLoc" style="display: none;">
+                <div class="col-md-6 mb-3 editLoc">
                     {{ fornecedor_form.fornecedorEstado.label }}
-                    <select class="form-control" name="fornecedorEstado" required id="id_fornecedorEstado">
-                        <option value=""></option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
+                    {{ fornecedor_form.fornecedorEstado }}
                 </div>
 
 
-                <div class="col-md-6 mb-3 editLoc" style="display: none;">
+                <div class="col-md-6 mb-3 editLoc">
                     {{ fornecedor_form.fornecedorCidade.label }}
-                    <select class="form-control" name="fornecedorCidade" id="id_fornecedorCidade" required>
-                        <option value=""></option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Por Favor Digite uma Descrição!!!
-                    </div>
-                </div>
-
-
-                <div class="col-md-6 mb-3 editlocreadondly">
-                    {{ fornecedor_form.fornecedorPais.label }}
-                    <input type="text" value="{% for pais in paises %}{% if pais.idPais == fornecedor_form.fornecedorPais.value %}{{ pais.nome }}{% endif %}{% endfor %}" class="form-control" id="" maxlength="100" name="" readonly>
-                </div>
-                <div class="col-md-6 mb-3 editlocreadondly">
-                    {{ fornecedor_form.fornecedorEstado.label }}
-                    <input type="text" value="{% for estado in estados %}{% if estado.idEstado == fornecedor_form.fornecedorEstado.value %}{{ estado.nome }}{% endif %}{% endfor %}" class="form-control" id="" maxlength="100" name="" readonly>
-                </div>
-                <div class="col-md-6 mb-3 editlocreadondly">
-                    {{ fornecedor_form.fornecedorCidade.label }}
-                    <input type="text" value="{% for cidade in cidades %}{% if cidade.idCidade == fornecedor_form.fornecedorCidade.value %}{{ cidade.nome }}{% endif %}{% endfor %}" class="form-control" id="" maxlength="100" name="" readonly>
+                    {{ fornecedor_form.fornecedorCidade }}
                 </div>
 
             </div><br>
@@ -203,33 +127,18 @@
 {% endblock content %}
 {% block scriptPage %}
 <script type='text/javascript'>
-	$("#buttonEditLoc").click(function () {
-        $(".buttonEditLoc").hide();
-        $(".editlocreadondly").hide();
-        $(".editLoc").show();
-        $(".buttoncancelEditLoc").show();
-    });
-    $("#buttoncancelEditLoc").click(function () {
-        var estado = $('select[name=fornecedorEstado]');
-        var cidade = $('select[name=fornecedorCidade]');
-        $("select[name=fornecedorPais] option[value='{{fornecedor_form.fornecedorPais.value}}']").prop('selected', 'true')
-        $("select[name=fornecedorEstado] option[value='{{fornecedor_form.fornecedorEstado.value}}']").prop('selected', 'true')
-        $("select[name=fornecedorCidade] option[value='{{fornecedor_form.fornecedorCidade.value}}']").prop('selected', 'true')
-        $(".buttonEditLoc").show();
-        $(".editlocreadondly").show();
-        $(".editLoc").hide();
-        $(".buttoncancelEditLoc").hide();
-    });
-    $("select[name=fornecedorPais] option[value='{{fornecedor_form.fornecedorPais.value}}']").prop('selected', 'true')
-    $("select[name=fornecedorEstado] option[value='{{fornecedor_form.fornecedorEstado.value}}']").prop('selected', 'true')
-    $("select[name=fornecedorCidade] option[value='{{fornecedor_form.fornecedorCidade.value}}']").prop('selected', 'true')
+    $("select[name=ativo]").toggleClass("custom-select")
+    $("select[name=fornecedorCidade]").toggleClass("custom-select");
+    $("select[name=fornecedorEstado]").toggleClass("custom-select");
+    $("select[name=fornecedorPais]").toggleClass("custom-select");
+    //$('select[name=fornecedorCidade] <option value="{{ fornecedor_form.fornecedorEstado.value }}" selected disabled>{% for estado in estados %}{% if estado.idEstado == fornecedor_form.fornecedorEstado.value %}{{ estado.nome }}{% endif %}{% endfor %}</option>');
     $(function(){
         var estado = $('select[name=fornecedorEstado]');
         var cidade = $('select[name=fornecedorCidade]');
         estado.empty();
         cidade.empty();
-        estado.prepend('<option value="Not selected" selected disabled>Select pais...</option>');
-        cidade.prepend('<option value="Not selected" selected disabled>Select estado...</option>');
+        estado.prepend('<option value="{{ fornecedor_form.fornecedorEstado.value }}" selected disabled>{% for estado in estados %}{% if estado.idEstado == fornecedor_form.fornecedorEstado.value %}{{ estado.nome }}{% endif %}{% endfor %}</option>');
+        cidade.prepend('<option value="{{ fornecedor_form.fornecedorCidade.value }}" selected disabled>{% for cidade in cidades %}{% if cidade.idCidade == fornecedor_form.fornecedorCidade.value %}{{ cidade.nome }}{% endif %}{% endfor %}</option>');
         $('select[name=fornecedorPais]').change(function(){
             if('option[value="notValue"]'){
                 estado.empty();

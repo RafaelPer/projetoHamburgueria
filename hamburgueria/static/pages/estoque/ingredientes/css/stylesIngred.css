@@ -3,7 +3,10 @@
 }
 
 .h1 {
-    font-size: 20pt;
+    font-size: 25pt;
+    background-color: rgb(194, 19, 10);
+    color: rgb(238, 238, 238);
+    padding: 5px;
 }
 
 .button-action {
@@ -15,8 +18,18 @@
     box-shadow: 2px 2px 2px #cccccc;
     margin-top: 10px;
     border: 2px solid #cccccc;
+    padding: 10px;
 }
 
 .divDesc {
     width: 100%;
+}
+
+.spanIngredi {
+    width: 100%; 
+    border-bottom: 2px solid #7e7e7e; 
+    margin: 10px; 
+    text-align: center; 
+    color: black; 
+    font-size: 18pt;
 }
