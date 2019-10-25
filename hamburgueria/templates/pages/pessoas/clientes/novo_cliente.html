@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}CRIAÇÃO DE FORNECEDOR{% endblock title %}
+
+{% block cssPage %}
+    <link rel="stylesheet" href="{% static 'pages/estoque/fornecedores/css/stylesForn.css' %}">
+{% endblock cssPage %}
+
+{% block menu %}
+{% endblock menu %}
+
+{% block content %}
+    <div class="formNovoForn">
+        <h1 class="h1 text-center">TELA DE CRIAÇÃO DE NOVO FORNECEDOR</h1>
+        <form method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+            <!--{{ adicional_form.as_p }}-->
+            <div class="form-row">
+                <span class="spanLocal">INFORMAÇÕES DO FORNECEDOR</span>
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.razao_social.label }}
+                    {{ fornecedor_form.razao_social }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.cnpj.label }}
+                    {{ fornecedor_form.cnpj }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.ie.label }}
+                    {{ fornecedor_form.ie }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.rua.label }}
+                    {{ fornecedor_form.rua }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.bairro.label }}
+                    {{ fornecedor_form.bairro }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.cep.label }}
+                    {{ fornecedor_form.cep }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.email.label }}
+                    {{ fornecedor_form.email }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.numeroLocal.label }}
+                    {{ fornecedor_form.numeroLocal }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.telefone1.label }}
+                    {{ fornecedor_form.telefone1 }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.telefone2.label }}
+                    {{ fornecedor_form.telefone2 }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.celular1.label }}
+                    {{ fornecedor_form.celular1 }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.celular2.label }}
+                    {{ fornecedor_form.celular2 }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.foto.label }}
+                    {{ fornecedor_form.foto }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.ativo.label }}
+                    {{ fornecedor_form.ativo }}
+                </div>
+
+                
+                <span class="spanLocal">LOCALIZAÇÃO</span>
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.fornecedorPais.label }}
+                    {{ fornecedor_form.fornecedorPais }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.fornecedorEstado.label }}
+                    {{ fornecedor_form.fornecedorEstado }}
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    {{ fornecedor_form.fornecedorCidade.label }}
+                    {{ fornecedor_form.fornecedorCidade }}
+                </div>
+                
+            </div><br>
+            <button class="btn btn-success" type="submit">CRIAR</button>
+        </form>
+    </div>
+{% endblock content %}
+{% block scriptPage %}
+<script type='text/javascript'>
+    $("select[name=ativo]").toggleClass("custom-select")
+    $("select[name=fornecedorCidade]").toggleClass("custom-select");
+    $("select[name=fornecedorEstado]").toggleClass("custom-select");
+    $("select[name=fornecedorPais]").toggleClass("custom-select");
+    $(function(){
+        var estado = $('select[name=fornecedorEstado]');
+        var cidade = $('select[name=fornecedorCidade]');
+        estado.empty();
+        cidade.empty();
+        estado.prepend('<option value="Not selected" selected disabled>Selecione o Pais...</option>');
+        cidade.prepend('<option value="Not selected" selected disabled>Selecione o Estado...</option>');
+        $('select[name=fornecedorPais]').change(function(){
+            if('option[value="notValue"]'){
+                estado.empty();
+                cidade.empty();
+            }
+            if($("#idPais option:selected").text() != ("YOU SHOULD INSERT THE INITIAL VALUE OF THE pais FIELD WHEN IT IS NOT SELECTED")) {
+                var pais_id = $('select[name=fornecedorPais]').val();
+                request_url = 'get-estado/' + pais_id;
+                $.ajax({
+                    url: request_url,
+                    type: "GET",
+                    success: function(data){
+                        estado.empty();
+                        cidade.empty();
+                        estado.prepend('<option value="notValue" selected>---------</option>');
+                        $.each(data, function(key, value){
+                            console.log("Estado: ",data, key, value)
+                            estado.append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    }
+                })
+            }
+        })
+        $('select[name=fornecedorEstado]').change(function(){
+            if('option[value="notValue"]'){
+                cidade.empty();
+            }
+            if($("#idEstado option:selected").text() != ("YOU SHOULD INSERT THE INITIAL VALUE OF THE estado FIELD WHEN IT IS NOT SELECTED")) {
+                var estado_id = $('select[name=fornecedorEstado]').val();
+                request_url = 'get-cidade/' + estado_id;
+                $.ajax({
+                    url: request_url,
+                    type: "GET",
+                    success: function(data){
+                        cidade.empty();
+                        cidade.prepend('<option value="notValue" selected>---------</option>');
+                        $.each(data, function(key, value){
+                            console.log("Cidade: ",data, key, value)
+                            cidade.append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    }
+                })
+            }
+        })
+    });
+</script>
+{% endblock scriptPage %}
