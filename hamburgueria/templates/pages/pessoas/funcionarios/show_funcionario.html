@@ -95,32 +95,42 @@
                 </div>
 
 
-                <div class="col-md-6 mb-3 custom-file">
-                    {{ funcionario_form.foto.label }}
-                    {{ funcionario_form.foto }}
-                </div>
-
-
                 <div class="col-md-6 mb-3 form-group">
                     {{ funcionario_form.ativo.label }}
                     {{ funcionario_form.ativo }}
                 </div>
 
                 
+                <div class="col-md-6 mb-3">
+                    {{ funcionario_form.funcionarioTipoFuncionario.label }}
+                    {{ funcionario_form.funcionarioTipoFuncionario }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    {{ funcionario_form.data_admissao.label }}
+                    {{ funcionario_form.data_admissao }}
+                </div>
+
+                <div class="col-md-6 mb-3 custom-file">
+                    {{ funcionario_form.foto.label }}
+                    {{ funcionario_form.foto }}
+                </div>
+
+                
                 <span class="spanLocal">LOCALIZAÇÃO</span>
-                <div class="col-md-6 mb-3 editlocreadondly">
+                <div class="col-md-6 mb-3">
                     {{ funcionario_form.funcionarioPais.label }}
                     {{ funcionario_form.funcionarioPais }}
                 </div>
 
 
-                <div class="col-md-6 mb-3 editlocreadondly">
+                <div class="col-md-6 mb-3">
                     {{ funcionario_form.funcionarioEstado.label }}
                     {{ funcionario_form.funcionarioEstado }}
                 </div>
 
 
-                <div class="col-md-6 mb-3 editlocreadondly">
+                <div class="col-md-6 mb-3">
                     {{ funcionario_form.funcionarioCidade.label }}
                     {{ funcionario_form.funcionarioCidade }}
                 </div>
@@ -144,5 +154,7 @@
     $("select[name=funcionarioCidade]").toggleClass("custom-select");
     $("select[name=funcionarioEstado]").toggleClass("custom-select");
     $("select[name=funcionarioPais]").toggleClass("custom-select");
+    $("select[name=funcionarioTipoFuncionario]").toggleClass("custom-select").attr("disabled", true);
+    $("input[name=data_admissao]").toggleClass("form-control").attr("disabled", true);
 </script>
 {% endblock scriptPage %}

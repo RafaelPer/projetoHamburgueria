@@ -1,6 +1,7 @@
 from django import forms
 from .models import Funcionario
 from .choices import STATUS
+from datetime import datetime
 
 
 class FuncionarioForm(forms.ModelForm):
@@ -117,7 +118,10 @@ class FuncionarioForm(forms.ModelForm):
                     'placeholder': 'Telefone',
                     'id': 'id_telefone1',
                     'maxlength': '24',
-                    'name': 'telefone1'
+                    'name': 'telefone1',
+                    #'pattern': '\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}',
+                    #'data-mask': '(99) 9999-9999',
+                    #'type': 'tel'
                 }
             ),
             'telefone2': forms.TextInput(
@@ -147,6 +151,7 @@ class FuncionarioForm(forms.ModelForm):
                     'name': 'celular2'
                 }
             ),
+            'data_admissao': forms.DateTimeInput(),
 
         }
 

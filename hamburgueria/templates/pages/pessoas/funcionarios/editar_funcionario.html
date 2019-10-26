@@ -96,31 +96,40 @@
 
 
                 <div class="col-md-6 mb-3">
-                    {{ funcionario_form.foto.label }}
-                    {{ funcionario_form.foto }}
-                </div>
-
-
-                <div class="col-md-6 mb-3">
                     {{ funcionario_form.ativo.label }}
                     {{ funcionario_form.ativo }}
                 </div>
 
+                <div class="col-md-6 mb-3">
+                    {{ funcionario_form.funcionarioTipoFuncionario.label }}
+                    {{ funcionario_form.funcionarioTipoFuncionario }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    {{ funcionario_form.data_admissao.label }}
+                    {{ funcionario_form.data_admissao }}
+                </div>
+
+                <div class="col-md-6 mb-3 custom-file">
+                    {{ funcionario_form.foto.label }}
+                    {{ funcionario_form.foto }}
+                </div>
+
                 
                 <span class="spanLocal">LOCALIZAÇÃO</span>
-                <div class="col-md-6 mb-3 editLoc">
+                <div class="col-md-6 mb-3">
                     {{ funcionario_form.funcionarioPais.label }}
                     {{ funcionario_form.funcionarioPais }}
                 </div>
 
 
-                <div class="col-md-6 mb-3 editLoc">
+                <div class="col-md-6 mb-3">
                     {{ funcionario_form.funcionarioEstado.label }}
                     {{ funcionario_form.funcionarioEstado }}
                 </div>
 
 
-                <div class="col-md-6 mb-3 editLoc">
+                <div class="col-md-6 mb-3">
                     {{ funcionario_form.funcionarioCidade.label }}
                     {{ funcionario_form.funcionarioCidade }}
                 </div>
@@ -136,6 +145,28 @@
     $("select[name=funcionarioCidade]").toggleClass("custom-select");
     $("select[name=funcionarioEstado]").toggleClass("custom-select");
     $("select[name=funcionarioPais]").toggleClass("custom-select");
+    $("select[name=funcionarioTipoFuncionario]").toggleClass("custom-select");
+    $("input[name=data_admissao]").toggleClass("form-control");
+    $("input[name=data_admissao]").datepicker({
+        dateFormat: 'dd/mm/yy',
+        dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
+        dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+        dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+        monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+        monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+        //showButtonPanel:true,
+        changeMonth: true,
+        changeYear: true,
+        showOtherMonths: true,
+        selectOtherMonths: true,
+        changeYear: true,
+        yearRange: '1900:2999',
+        nextText: 'Próximo',
+        prevText: 'Anterior',
+        closeText: "OK",
+        currentText: "Hoje",
+        gotoCurrent: true,
+    });
     //$('select[name=funcionarioCidade] <option value="{{ funcionario_form.funcionarioEstado.value }}" selected disabled>{% for estado in estados %}{% if estado.idEstado == funcionario_form.funcionarioEstado.value %}{{ estado.nome }}{% endif %}{% endfor %}</option>');
     $(function(){
         var estado = $('select[name=funcionarioEstado]');
