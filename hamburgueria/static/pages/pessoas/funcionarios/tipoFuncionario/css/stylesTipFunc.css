@@ -10,7 +10,7 @@
 }
 
 .button-estoque {
-    width: 32%;
+    width: 49%;
     margin: 5px;
 }
 
@@ -19,7 +19,7 @@
     width: 33,1%;
 }
 
-.formNovoFunc {
+.formNovoTipoFunc {
     box-shadow: 2px 2px 2px #cccccc;
     margin-top: 10px;
     border: 2px solid #cccccc;
@@ -38,7 +38,7 @@
     font-size: 16pt;
 }
 
-.button-func {
+.button-tipofunc {
     width: 33.1%;
 }
 
@@ -61,4 +61,12 @@
     text-align: center; 
     color: black; 
     font-size: 18pt;
+}
+
+.divCheckBox{
+    border: 2px solid #cccccc;
+    padding: 10px; 
+    background-color: rgb(238, 238, 238); 
+    color: black;
+    margin-top: 20px;
 }

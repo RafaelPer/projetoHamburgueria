@@ -5,6 +5,8 @@ from apps.ingredientes.views import criarIngrediente, showIngrediente, editarIng
 from apps.fornecedores.views import criarFornecedor, showFornecedor, listarFornecedores, editarFornecedor, eliminarFornecedor
 from apps.clientes.views import criarCliente, showCliente, listarClientes, editarCliente, eliminarCliente
 from apps.funcionarios.views import  criarFuncionario, showFuncionario, listarFuncionarios, editarFuncionario, eliminarFuncionario
+from apps.tipoFuncionario.views import  criarTipoFuncionario, showTipoFuncionario, listarTiposFuncionarios, editarTipoFuncionario, eliminarTipoFuncionario
+
 
 urlpatterns = [
     path('homepage/', views.Home, name = 'index'),
@@ -70,5 +72,12 @@ urlpatterns = [
     path('pessoas/editar_funcionario/<int:idFuncionario>', editarFuncionario, name = 'editar_funcionario'),
     path('pessoas/mostrar_funcionario/<int:idFuncionario>', showFuncionario, name = 'show_funcionario'),
     path('pessoas/eliminar_funcionario/<int:idFuncionario>', eliminarFuncionario, name = 'eliminar_funcionario'),
+
+    #tipo de funcionario
+    path('pessoas/tipoFuncionario', listarTiposFuncionarios, name = 'tipoFuncionario'),
+    path('pessoas/tipoFuncionario/novo_tipoFuncionario', criarTipoFuncionario, name = 'novo_tipoFuncionario'),
+    path('pessoas/tipoFuncionario/editar_tipoFuncionario/<int:idTipoFuncionario>', editarTipoFuncionario, name = 'editar_tipoFuncionario'),
+    path('pessoas/tipoFuncionario/mostrar_tipoFuncionario/<int:idTipoFuncionario>', showTipoFuncionario, name = 'show_tipoFuncionario'),
+    path('pessoas/tipoFuncionario/eliminar_tipoFuncionario/<int:idTipoFuncionario>', eliminarTipoFuncionario, name = 'eliminar_tipoFuncionario'),
     
 ]
