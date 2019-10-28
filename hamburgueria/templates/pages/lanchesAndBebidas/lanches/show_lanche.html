@@ -1,23 +1,23 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
-{% block title %}VISUALIZAÇÃO DE TIPOS DE FUNCIONARIO{% endblock title %}
+{% block title %}VISUALIZAÇÃO DE LANCHE{% endblock title %}
 
 {% block cssPage %}
-    <link rel="stylesheet" href="{% static 'pages/pessoas/funcionarios/tipoFuncionario/css/stylesTipFunc.css' %}">
+    <link rel="stylesheet" href="{% static 'pages/lanchesAndBebidas/lanches/css/stylesLanc.css' %}">
 {% endblock cssPage %}
 
 {% block menu %}
 {% endblock menu %}
 
 {% block content %}
-    <div class="formNovoTipoFunc">
-        <h1 class="h1 text-center">TELA DE VISUALIZAÇÃO DE TIPOS DE FUNCIONARIO</h1>
+    <div class="formNovoLanche">
+        <h1 class="h1 text-center">TELA DE VISUALIZAÇÃO LANCHE</h1>
             {% csrf_token %}
             <!--{{ adicional_form.as_p }}-->
             <div class="form-row">
 
-                <span class="spanLocal">INFORMAÇÕES DO TIPO DE FUNCIONARIO</span>
+                <span class="spanLocal">INFORMAÇÕES DO LANCHE</span>
                 <div class="col-md-6 mb-3">
                         {{ tipofuncionario_form.nome.label }}
                         {{ tipofuncionario_form.nome }}
