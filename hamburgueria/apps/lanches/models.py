@@ -1,5 +1,5 @@
 from django.db import models
-from apps.tamanhoLanche.models import tamanhoLanche
+#from apps.tamanhoLanche.models import tamanhoLanche
 from apps.ingredientes.models import Ingrediente
 from datetime import datetime
 # Create your models here.
@@ -29,7 +29,7 @@ class Lanche(models.Model):
     nome = models.CharField(max_length = 100, blank = False, null = False)
     descricao = models.TextField(blank = False, null = False, default='')
     preco = models.DecimalField(max_digits=4, decimal_places=2, blank = False, null = False)
-    lancheTamanhoLanche = models.ForeignKey(tamanhoLanche, on_delete=models.CASCADE)
+    #lancheTamanhoLanche = models.ForeignKey(tamanhoLanche, on_delete=models.CASCADE)
     foto = models.ImageField(upload_to = user_directory_path, default = 'sem-imagem-avatar.png')
     lancheIngrediente = models.ManyToManyField(Ingrediente)
     estado = models.BooleanField(default=True)

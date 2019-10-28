@@ -1,5 +1,5 @@
 from django.db import models
-from apps.tamanhoBebidas.models import tamanhoBebida
+#from apps.tamanhoBebidas.models import tamanhoBebida
 from datetime import datetime
 # Create your models here.
 
@@ -38,7 +38,7 @@ class Bebida(models.Model):
         max_length = 5,
         choices=STATUS,
     )
-    bebidaTamanhoBebida = models.ForeignKey(tamanhoBebida, on_delete=models.CASCADE)
+    #bebidaTamanhoBebida = models.ForeignKey(tamanhoBebida, on_delete=models.CASCADE)
     quantidade = models.DecimalField(max_digits=4, decimal_places=4, blank = False, null = False, default= 0.0000)
     foto = models.ImageField(upload_to = user_directory_path, default = 'sem-imagem-avatar.png')
     estado = models.BooleanField(default=True)

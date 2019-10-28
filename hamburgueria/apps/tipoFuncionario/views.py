@@ -89,4 +89,4 @@ def showTipoFuncionario(request, idTipoFuncionario):
         print("form if: "+str(tipofuncionario_form))
     else:
         tipofuncionario_form = None
-    return render(request, 'pages/pessoas/funcionarios//tipoFuncionario/show_tipofuncionario.html', {'tipofuncionario_form':tipofuncionario_form, 'idTipoFuncionario': idTipoFunc})
+    return render(request, 'pages/pessoas/funcionarios/tipoFuncionario/show_tipofuncionario.html', {'tipofuncionario_form':tipofuncionario_form, 'idTipoFuncionario': idTipoFunc})

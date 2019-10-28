@@ -6,7 +6,8 @@ from apps.fornecedores.views import criarFornecedor, showFornecedor, listarForne
 from apps.clientes.views import criarCliente, showCliente, listarClientes, editarCliente, eliminarCliente
 from apps.funcionarios.views import  criarFuncionario, showFuncionario, listarFuncionarios, editarFuncionario, eliminarFuncionario
 from apps.tipoFuncionario.views import  criarTipoFuncionario, showTipoFuncionario, listarTiposFuncionarios, editarTipoFuncionario, eliminarTipoFuncionario
-
+from apps.lanches.views import criarLanche, showLanche, listarLanches, editarLanche, eliminarLanche
+#from apps.bebidas.views import criarBebida, showBebida, listarBebidas, editarBebida, eliminarBebida
 
 urlpatterns = [
     path('homepage/', views.Home, name = 'index'),
@@ -79,5 +80,19 @@ urlpatterns = [
     path('pessoas/tipoFuncionario/editar_tipoFuncionario/<int:idTipoFuncionario>', editarTipoFuncionario, name = 'editar_tipoFuncionario'),
     path('pessoas/tipoFuncionario/mostrar_tipoFuncionario/<int:idTipoFuncionario>', showTipoFuncionario, name = 'show_tipoFuncionario'),
     path('pessoas/tipoFuncionario/eliminar_tipoFuncionario/<int:idTipoFuncionario>', eliminarTipoFuncionario, name = 'eliminar_tipoFuncionario'),
+
+    #lanches
+    path('lanches/', listarLanches, name = 'lanches'),
+    path('lanches/novo_lanche', criarLanche, name = 'novo_lanche'),
+    path('lanches/editar_lanche/<int:idLanche>', editarLanche, name = 'editar_lanche'),
+    path('lanches/mostrar_lanche/<int:idLanche>', showLanche, name = 'show_lanche'),
+    path('lanches/eliminar_lanche/<int:idLanche>', eliminarLanche, name = 'eliminar_lanche'),
+
+    #bebidas
+    #path('bebidas/', listarBebidas, name = 'bebidas'),
+    #path('bebidas/novo_bebida', criarBebida, name = 'novo_bebida'),
+    #path('bebidas/editar_bebida/<int:idBebida>', editarBebida, name = 'editar_bebida'),
+    #path('bebidas/mostrar_bebida/<int:idBebida>', showBebida, name = 'show_bebida'),
+    #path('bebidas/eliminar_bebida/<int:idBebida>', eliminarBebida, name = 'eliminar_bebida'),
     
 ]
