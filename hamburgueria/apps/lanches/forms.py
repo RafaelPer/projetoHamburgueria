@@ -40,6 +40,11 @@ class LancheForm(forms.ModelForm):
                     'name': 'preco',
                 }
             ),
+            'lancheIngrediente': forms.SelectMultiple(
+                attrs = {
+                    'class': 'form-control',
+                }
+            ),
         }
 
 class LancheFormReadonly(forms.ModelForm):
@@ -81,6 +86,12 @@ class LancheFormReadonly(forms.ModelForm):
                     'id': 'id_preco',
                     'name': 'preco',
                     'readonly':'readonly',
+                }
+            ),
+            'lancheIngrediente': forms.SelectMultiple(
+                attrs = {
+                    'class': 'form-control',
+                    'disabled':'disabled',
                 }
             ),
         }

@@ -17,34 +17,51 @@
             <!--{{ adicional_form.as_p }}-->
             <div class="form-row">
 
+            <div class="form-row">
                 <span class="spanLocal">INFORMAÇÕES DO LANCHE</span>
                 <div class="col-md-6 mb-3">
-                        {{ tipofuncionario_form.nome.label }}
-                        {{ tipofuncionario_form.nome }}
-                    </div>
-    
-    
-                    <div class="divDesc">
-                        {{ tipofuncionario_form.descricao.label }}
-                        {{ tipofuncionario_form.descricao }}
-                    </div>
-    
-    
-                    <div class="custom-control custom-checkbox divCheckBox">
-                        {{ tipofuncionario_form.estado.label }}
-                        {{ tipofuncionario_form.estado }}
-                    </div>
+                    {{ lanche_form.nome.label }}
+                    {{ lanche_form.nome }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    {{ lanche_form.preco.label }}
+                    {{ lanche_form.preco }}
+                </div>
+
+                <div class="divDesc">
+                    {{ lanche_form.descricao.label }}
+                    {{ lanche_form.descricao }}
+                </div>
+
+                <div class="divDesc" style="margin-bottom: 10px;">
+                    {{ lanche_form.lancheIngrediente.label }}
+                    {{ lanche_form.lancheIngrediente }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    {{ lanche_form.foto.label }}
+                    {{ lanche_form.foto }}
+                </div>
+
+
+                <div class="custom-control custom-checkbox divCheckBox">
+                    {{ lanche_form.estado.label }}
+                    {{ lanche_form.estado }}
+                </div>
 
                 
             </div><br>
-            <a class="btn btn-warning button-action" href="{% url 'editar_tipoFuncionario' idTipoFuncionario %}">EDITAR</a>
-            <a class="btn btn-danger button-action" href="{% url 'eliminar_tipoFuncionario' idTipoFuncionario %}">DELETAR</a>
-            <a class="btn btn-primary button-action" href="{% url 'tipoFuncionario' %}">VOLTAR</a>   
+            <a class="btn btn-warning button-action" href="{% url 'editar_lanche' idLanche %}">EDITAR</a>
+            <a class="btn btn-danger button-action" href="{% url 'eliminar_lanche' idLanche %}">DELETAR</a>
+            <a class="btn btn-primary button-action" href="{% url 'lanches' %}">VOLTAR</a>   
 
     </div>
 {% endblock content %}
 {% block scriptPage %}
 <script type='text/javascript'>
     $("input[name=estado]").attr("disabled", true);
+    $("select[name=estado]").toggleClass("custom-select");
+    $("input[name=foto]").attr("disabled", true);
 </script>
 {% endblock scriptPage %}

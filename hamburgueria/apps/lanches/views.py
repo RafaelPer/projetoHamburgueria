@@ -40,7 +40,7 @@ class EliminarLanche(DeleteView):
 
 def criarLanche(request):
     if request.method == 'POST':
-        lanche_form = LancheForm(request.POST)
+        lanche_form = LancheForm(request.POST, request.FILES)
         if lanche_form.is_valid():
             print(lanche_form.save())
             lanche_form.save()
@@ -63,7 +63,7 @@ def editarLanche(request, idLanche):
         print("form if: "+str(lanche_form))
     else:
         print("entrou else")
-        lanche_form = LancheForm(request.POST, instance = lanche)
+        lanche_form = LancheForm(request.POST, request.FILES, request.FILES, instance = lanche)
         print("form else: "+str(lanche_form))
         if lanche_form.is_valid():
             lanche_form.save()
