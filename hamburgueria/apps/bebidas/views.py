@@ -45,6 +45,8 @@ def criarBebida(request):
             print(bebida_form.save())
             bebida_form.save()
             return redirect('bebidas')
+        else:
+            print("is invalid form")
     else:
         bebida_form = BebidaForm()
     print("bebida: "+str(bebida_form))

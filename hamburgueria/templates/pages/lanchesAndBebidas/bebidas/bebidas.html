@@ -1,54 +1,63 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
-{% block title %}LISTA DE TIPOS DE FUNCIONARIOS{% endblock title %}
+{% block title %}LISTA DE BEBIDAS{% endblock title %}
 
 {% block cssPage %}
-    <link rel="stylesheet" href="{% static 'pages/pessoas/funcionarios/tipoFuncionario/css/stylesTipFunc.css' %}">
+    <link rel="stylesheet" href="{% static 'pages/lanchesAndBebidas/bebidas/css/stylesBeb.css' %}">
 {% endblock cssPage %}
 
 {% block menu %}
 {% endblock menu %}
 
 {% block content %}
-    <h1 class="h1 text-center">LISTA DE TIPOS DE FUNCIONARIOS</h1>
+    <h1 class="h1 text-center">LISTA DE BEBIDAS</h1>
     <div class="search">
         <input type="text" class="form-control" id="search" placeholder="Area de Pesquisa" name="search" required><br>
     </div>
     <div>
-        <a class="btn btn-secondary button-estoque" href="{% url 'novo_tipoFuncionario' %}">NOVO TIPO DE FUNCIONARIO</a>
-        <a class="btn btn-secondary button-estoque" href="{% url 'funcionarios' %}">VOLTAR</a>
+        <a class="btn btn-secondary" href="{% url 'novo_bebida' %}">NOVA BEBIDA</a>
     </div>
-    <div class="formNovoTipoFunc">
+    <div class="formNovoBeb">
         <div class="adicionais-div estoque-div">
-            <h2 class="h2 text-center">TIPOS DE FUNCIONARIOS CADASTRADOS</h2>
-            {% if tiposfuncionarios %}
+            <h2 class="h2 text-center">BEBIDAS CADASTRADAS</h2>
+            {% if bebidas %}
                 <table class="table text-center">
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">NOME</th>
                             <th scope="col">DESCRIÇÃO</th>
+                            <th scope="col">É ALCOOLICO?</th>
+                            <th scope="col">QUANTIDADE</th>
+                            <th scope="col">PREÇO</th>                            
                             <th scope="col">AÇÕES</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for tipofuncionario in tiposfuncionarios %}
+                        {% for bebida in bebidas %}
                             <tr>
-                                <th scope="row">{{ tipofuncionario.idTipoFuncionario }}</th>
-                                <th>{{ tipofuncionario.nome }}</th>
-                                <th>{{ tipofuncionario.descricao }}</th>
+                                <th scope="row">{{ bebida.idBebida }}</th>
+                                <th>{{ bebida.nome }}</th>
+                                <th>{{ bebida.descricao }}</th>
+                                {% if bebida.isAlcoolico == True %}
+                                <th>SIM</th>
+                                {% else %}
+                                <th>NÃO</th>
+                                {% endif %}
+                                <th>{{ bebida.quantidade }}</th>
+                                <th>{{ bebida.preco }}</th>
                                 <th>
-                                    <a class="btn btn-info col-md-4 mb-3" href="{% url 'show_tipoFuncionario' tipofuncionario.idTipoFuncionario %}">VISUALIZAR</a>
-                                    <a class="btn btn-warning col-md-3 mb-3" href="{% url 'editar_tipoFuncionario' tipofuncionario.idTipoFuncionario %}">EDITAR</a>
-                                    <a class="btn btn-danger col-md-4 mb-3" href="{% url 'eliminar_tipoFuncionario' tipofuncionario.idTipoFuncionario %}">DELETAR</a>
+                                    <a class="btn btn-info col-md-4 mb-3" href="{% url 'show_bebida' bebida.idBebida %}">VISUALIZAR</a>
+                                    <a class="btn btn-warning col-md-3 mb-3" href="{% url 'editar_bebida' bebida.idBebida %}">EDITAR</a>
+                                    <a class="btn btn-danger col-md-4 mb-3" href="{% url 'eliminar_bebida' bebida.idBebida %}">DELETAR</a>
                                 </th>
                             </tr>
                         {% endfor %}
                     </tbody>
                 </table>
             {% else %}
-                <h3 class="h3 text-center">Não existe tipos de funcionarios registrados</h3>
+                <h3 class="h3 text-center">Não existe bebidas registradas</h3>
             {% endif %}
         </div>
     </div>

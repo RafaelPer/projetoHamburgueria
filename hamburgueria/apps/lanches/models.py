@@ -28,7 +28,7 @@ class Lanche(models.Model):
     idLanche = models.AutoField(primary_key = True)
     nome = models.CharField(max_length = 100, blank = False, null = False)
     descricao = models.TextField(blank = False, null = False, default='')
-    preco = models.DecimalField(max_digits=4, decimal_places=2, blank = False, null = False)
+    preco = models.DecimalField(max_digits=10, decimal_places=5, blank = False, null = False)
     #lancheTamanhoLanche = models.ForeignKey(tamanhoLanche, on_delete=models.CASCADE)
     foto = models.ImageField(upload_to = user_directory_path, default = 'sem-imagem-avatar.png')
     lancheIngrediente = models.ManyToManyField(Ingrediente)

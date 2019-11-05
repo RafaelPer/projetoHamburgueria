@@ -33,14 +33,14 @@ class Bebida(models.Model):
     idBebida = models.AutoField(primary_key = True)
     nome = models.CharField(max_length = 100, blank = False, null = False)
     descricao = models.TextField(blank = False, null = False, default='texto')
-    preco = models.DecimalField(max_digits=4, decimal_places=2, blank = False, null = False)
+    preco = models.DecimalField(max_digits=10, decimal_places=5, blank = False, null = False)
     #isAlcoolico = models.CharField(
     #    max_length = 5,
     #    choices=STATUS,
     #)
     isAlcoolico= models.BooleanField(default=True)
     #bebidaTamanhoBebida = models.ForeignKey(tamanhoBebida, on_delete=models.CASCADE)
-    quantidade = models.DecimalField(max_digits=4, decimal_places=4, blank = False, null = False, default= 0.0000)
+    quantidade = models.IntegerField(blank = False, null = False)
     foto = models.ImageField(upload_to = user_directory_path, default = 'sem-imagem-avatar.png')
     estado = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)

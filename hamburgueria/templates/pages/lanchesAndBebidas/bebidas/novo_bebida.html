@@ -1,38 +1,57 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
-{% block title %}CRIAÇÃO DE TIPOS DE FUNCIONARIOS{% endblock title %}
+{% block title %}CRIAÇÃO DE BEBIDA{% endblock title %}
 
 {% block cssPage %}
-    <link rel="stylesheet" href="{% static 'pages/pessoas/funcionarios/tipoFuncionario/css/stylesTipFunc.css' %}">
+    <link rel="stylesheet" href="{% static 'pages/lanchesAndBebidas/bebidas/css/stylesBeb.css' %}">
 {% endblock cssPage %}
 
 {% block menu %}
 {% endblock menu %}
 
 {% block content %}
-    <div class="formNovoTipoFunc">
-        <h1 class="h1 text-center">TELA DE CRIAÇÃO DE NOVO TIPO FUNCIONARIO</h1>
+    <div class="formNovoBeb">
+        <h1 class="h1 text-center">TELA DE CRIAÇÃO DE BEBIDA</h1>
         <form method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
             {% csrf_token %}
             <!--{{ adicional_form.as_p }}-->
             <div class="form-row">
-                <span class="spanLocal">INFORMAÇÕES DO TIPO DE FUNCIONARIO</span>
+                <span class="spanLocal">INFORMAÇÃO DA BEBIDA</span>
                 <div class="col-md-6 mb-3">
-                    {{ tipofuncionario_form.nome.label }}
-                    {{ tipofuncionario_form.nome }}
+                    {{ bebida_form.nome.label }}
+                    {{ bebida_form.nome }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    {{ bebida_form.preco.label }}
+                    {{ bebida_form.preco }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    {{ bebida_form.quantidade.label }}
+                    {{ bebida_form.quantidade }}
+                </div>
+
+                <div class="divDesc" style="margin-bottom: 10px;">
+                    {{ bebida_form.descricao.label }}
+                    {{ bebida_form.descricao }}
+                </div>
+
+                <div class="col-md-6 mb-3 custom-control custom-checkbox divCheckBox">
+                    {{ bebida_form.isAlcoolico.label }}
+                    {{ bebida_form.isAlcoolico }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    {{ bebida_form.foto.label }}
+                    {{ bebida_form.foto }}
                 </div>
 
 
-                <div class="divDesc">
-                    {{ tipofuncionario_form.descricao.label }}
-                    {{ tipofuncionario_form.descricao }}
-                </div>
-
-
-                <div class="custom-control custom-checkbox divCheckBox">
-                    {{ tipofuncionario_form.estado.label }}
-                    {{ tipofuncionario_form.estado }}
+                <div class="col-md-6 mb-3 custom-control custom-checkbox divCheckBox">
+                    {{ bebida_form.estado.label }}
+                    {{ bebida_form.estado }}
                 </div>
 
             </div><br>
