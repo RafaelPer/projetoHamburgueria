@@ -19,7 +19,7 @@
     width: 33,1%;
 }
 
-.formNovoCli {
+.formNovoBeb {
     box-shadow: 2px 2px 2px #cccccc;
     margin-top: 10px;
     border: 2px solid #cccccc;
@@ -38,7 +38,7 @@
     font-size: 16pt;
 }
 
-.button-cli {
+.button-beb {
     width: 33.1%;
 }
 
@@ -47,7 +47,7 @@
     margin-top: 10px;
 }
 
-.cli-div {
+.beb-div {
     margin: 10px;
     padding: 5px;
     border: 2px solid #cccccc;

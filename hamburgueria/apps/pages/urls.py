@@ -7,7 +7,7 @@ from apps.clientes.views import criarCliente, showCliente, listarClientes, edita
 from apps.funcionarios.views import  criarFuncionario, showFuncionario, listarFuncionarios, editarFuncionario, eliminarFuncionario
 from apps.tipoFuncionario.views import  criarTipoFuncionario, showTipoFuncionario, listarTiposFuncionarios, editarTipoFuncionario, eliminarTipoFuncionario
 from apps.lanches.views import criarLanche, showLanche, listarLanches, editarLanche, eliminarLanche
-#from apps.bebidas.views import criarBebida, showBebida, listarBebidas, editarBebida, eliminarBebida
+from apps.bebidas.views import criarBebida, showBebida, listarBebidas, editarBebida, eliminarBebida
 
 urlpatterns = [
     path('homepage/', views.Home, name = 'index'),
@@ -89,10 +89,10 @@ urlpatterns = [
     path('lanches/eliminar_lanche/<int:idLanche>', eliminarLanche, name = 'eliminar_lanche'),
 
     #bebidas
-    #path('bebidas/', listarBebidas, name = 'bebidas'),
-    #path('bebidas/novo_bebida', criarBebida, name = 'novo_bebida'),
-    #path('bebidas/editar_bebida/<int:idBebida>', editarBebida, name = 'editar_bebida'),
-    #path('bebidas/mostrar_bebida/<int:idBebida>', showBebida, name = 'show_bebida'),
-    #path('bebidas/eliminar_bebida/<int:idBebida>', eliminarBebida, name = 'eliminar_bebida'),
+    path('bebidas/', listarBebidas, name = 'bebidas'),
+    path('bebidas/novo_bebida', criarBebida, name = 'novo_bebida'),
+    path('bebidas/editar_bebida/<int:idBebida>', editarBebida, name = 'editar_bebida'),
+    path('bebidas/mostrar_bebida/<int:idBebida>', showBebida, name = 'show_bebida'),
+    path('bebidas/eliminar_bebida/<int:idBebida>', eliminarBebida, name = 'eliminar_bebida'),
     
 ]
