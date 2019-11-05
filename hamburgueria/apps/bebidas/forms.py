@@ -53,13 +53,14 @@ class BebidaForm(forms.ModelForm):
 class BebidaFormReadonly(forms.ModelForm):
     class Meta:
         model = Bebida
-        fields = ['nome', 'descricao', 'preco', 'foto', 'quantidade', 'isAlcoolico', 'estado']
+        fields = ['nome', 'descricao', 'preco', 'quantidade', 'foto', 'isAlcoolico', 'estado']
         labels = {
-            'nome': 'Nome do Lanche',
+            'nome': 'Nome da Bebida',
             'descricao': 'Breve Descrição',
             'preco': 'Preço',
+            'quantidade': 'Quantidade',
             'foto': 'Foto',
-            'lancheIngrediente': 'Ingredientes',
+            'isAlcoolico': 'É Alcoolico?',
             'estado': 'Esta Ativo?',
         }
         widgets = {
@@ -85,7 +86,6 @@ class BebidaFormReadonly(forms.ModelForm):
             'quantidade': forms.NumberInput(
                 attrs = {
                     'class': 'form-control',
-                    'step': '0.00001',
                     'id': 'id_quantidade',
                     'name': 'quantidade',
                     'readonly':'readonly',
@@ -98,12 +98,6 @@ class BebidaFormReadonly(forms.ModelForm):
                     'id': 'id_preco',
                     'name': 'preco',
                     'readonly':'readonly',
-                }
-            ),
-            'lancheIngrediente': forms.SelectMultiple(
-                attrs = {
-                    'class': 'form-control',
-                    'disabled':'disabled',
                 }
             ),
         }
