@@ -6,7 +6,7 @@ from django.contrib.auth.models import (
 )
 # Create your models here.
 class UserManager(BaseUserManager):
-    def create_user(self, email, password = None, is_active = True, is_usuarioTipoUsuario = None, get_funcionario = None, is_admin = False, is_staff = False):
+    def create_user(self, email, password = None, is_active = True, is_admin = False, is_staff = False):
         if not email:
             raise ValueError("O USUARIO PRECISA TER UM EMAIL")
         if not password:
@@ -15,12 +15,11 @@ class UserManager(BaseUserManager):
             email = self.normalize_email(email)
         )
         user_obj.set_password(password)
-        user_obj.usuarioTipoUsuario = is_usuarioTipoUsuario
-        user_obj.usuarioFuncionario = get_funcionario
         user_obj.active = is_active
         user_obj.admin = is_admin
         user_obj.staff = is_staff
         print("create user "+str(user_obj));
+        print("create user save "+str(user_obj.save(using = self._db)));
         user_obj.save(using = self._db)
         return user_obj
 
@@ -69,17 +68,11 @@ class User(AbstractBaseUser):
     def get_sobrenome(self):
         return self.sobrenome
 
-    def get_funcionario(self):
-        return self.usuarioFuncionario
-
     def has_perm(self, perm, obj=None):
         return True
 
     def has_module_perms(self, app_label):
         return True
-    @property
-    def is_usuarioTipoUsuario(self):
-        return self.usuarioTipoUsuario
 
     @property
     def is_staff(self):
