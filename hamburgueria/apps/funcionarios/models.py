@@ -40,7 +40,7 @@ class Funcionario(models.Model):
     rua = models.CharField(max_length = 100, blank = False, null = False)
     bairro = models.CharField(max_length = 100, blank = False, null = False)
     cep = models.CharField(max_length = 9, blank = False, null = False)
-    email = models.EmailField(max_length = 100, blank = False, null = False)
+    email = models.EmailField(max_length = 100, blank = False, null = False, unique = True)
     numeroCasa = models.CharField(max_length = 6, blank = False, null = False)
     telefone1 = models.CharField(max_length = 24, blank = False, null = False)
     telefone2 = models.CharField(max_length = 24, blank = False, null = False)

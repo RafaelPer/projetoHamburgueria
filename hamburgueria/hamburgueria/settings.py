@@ -56,7 +56,10 @@ INSTALLED_APPS = [
     'apps.movimentacaoEntrada',
     'apps.movimentacaoSaida',
     'apps.pages',
+    'apps.accounts',
 ]
+
+AUTH_USER_MODEL = 'accounts.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
