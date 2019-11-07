@@ -28,7 +28,7 @@ class Pedido(models.Model):
     isBarRequest = models.BooleanField(default=False)
     kitchenFinishing = models.BooleanField(default=False)
     bartenderFinishing = models.BooleanField(default=False)
-    pedidoFuncionario = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
+    pedidoFuncionarios = models.ManyToManyField(Funcionario)
     pedidoCliente = models.ManyToManyField(Cliente)
     pedidoBebida = models.ManyToManyField(Bebida)
     pedidoLanche = models.ManyToManyField(Lanche)
