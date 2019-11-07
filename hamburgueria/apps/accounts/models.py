@@ -36,10 +36,12 @@ class UserManager(BaseUserManager):
             email, 
             password = password,
             is_admin = True,
+            is_staff = True,
         )
         print("create superuser "+str(user));
         print("create superuser email "+str(email));
         print("create superuser password "+str(password));
+        user.save(using=self._db)
         return user
 
 class User(AbstractBaseUser):
