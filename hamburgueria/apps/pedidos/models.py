@@ -9,18 +9,19 @@ from datetime import datetime
 
 class Pedido(models.Model):
 
-    STATUS = (
-        ('yes', 'sim'),
-        ('no', 'não')
-    )
+    #STATUS = (
+    #    ('yes', 'sim'),
+    #    ('no', 'não')
+    #)
 
     idPedido = models.AutoField(primary_key = True)
     dataPedido = models.DateTimeField(auto_now=False, auto_now_add=False, default=datetime.now)
     dataFinalPedido = models.DateTimeField(auto_now=False, auto_now_add=False, default=datetime.now)
-    isDelivery = models.CharField(
-        max_length = 5,
-        choices=STATUS,
-    )
+    #isDelivery = models.CharField(
+    #    max_length = 5,
+    #    choices=STATUS,
+    #)
+    isDelivery = models.BooleanField(default = False)
     mesa = models.CharField(max_length = 5, blank = False, null = False)
     estadoPedido = models.CharField(max_length = 50, blank = False, null = False)
     totalpedido = models.DecimalField(max_digits=4, decimal_places=2, blank = False, null = False)
