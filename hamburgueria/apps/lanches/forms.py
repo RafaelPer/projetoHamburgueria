@@ -1,5 +1,6 @@
 from django import forms
 from .models import Lanche
+from .models import LancheIngredientes
 
 
 class LancheForm(forms.ModelForm):
@@ -95,3 +96,9 @@ class LancheFormReadonly(forms.ModelForm):
                 }
             ),
         }
+
+class LancheIngredientesForm(forms.ModelForm):
+
+    class Meta:
+        model = LancheIngredientes
+        fields = '__all__'

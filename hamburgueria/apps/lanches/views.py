@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, resolve_url
 from django.core.exceptions import ObjectDoesNotExist
-from .forms import LancheForm, LancheFormReadonly
-from .models import Lanche
+from .forms import LancheForm, LancheFormReadonly, LancheIngredientesForm
+from .models import Lanche, LancheIngredientes
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
+from django.forms import inlineformset_factory
+from django.views.generic import ListView,   DetailView, UpdateView, CreateView, DeleteView
 
 # Create your views here.
 
@@ -39,16 +40,32 @@ class EliminarLanche(DeleteView):
 #views baseadas em funções
 
 def criarLanche(request):
+    lanche_formu = Lanche()
+    inglediente_lanche_formset = inlineformset_factory(
+        Lanche,
+        LancheIngredientes,
+        form=LancheIngredientesForm,
+        extra=0,
+        min_num=1,
+        validate_min=True,
+    )
     if request.method == 'POST':
-        lanche_form = LancheForm(request.POST, request.FILES)
-        if lanche_form.is_valid():
+        lanche_form = LancheForm(request.POST, request.FILES, instance=lanche_formu)
+        formset = inglediente_lanche_formset(
+            request.POST,
+            instance=lanche_formu, 
+            prefix='lanche'
+        )
+        if lanche_form.is_valid() and formset.is_valid():
             print(lanche_form.save())
             lanche_form.save()
+            formset.save()
             return redirect('lanches')
     else:
         lanche_form = LancheForm()
+        formset = inglediente_lanche_formset(instance=lanche_formu, prefix='lanche')
     print("lanche: "+str(lanche_form))
-    return render(request, 'pages/lanchesAndBebidas/lanches/novo_lanche.html', {'lanche_form':lanche_form})
+    return render(request, 'pages/lanchesAndBebidas/lanches/novo_lanche.html', {'lanche_form':lanche_form, 'formset':formset})
 
 def listarLanches(request):
     lanches = Lanche.objects.all()

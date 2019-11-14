@@ -46,7 +46,17 @@
 
                 <span class="spanLocal">INGREDIENTES</span>
 
-
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-inline" id="estoque">
+                            {% for ingrediente_lanche_form in formset %}
+                            <div id="ingrediente-{{ forloop.counter0 }}" class="form-group">
+                                {{ ingrediente_lanche_form }}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
 
             </div><br>
             <button class="btn btn-success" type="submit">CRIAR</button>
