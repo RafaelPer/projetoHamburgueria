@@ -28,14 +28,9 @@
                     {{ lanche_form.preco }}
                 </div>
 
-                <div class="divDesc">
+                <div class="divDesc" style="margin-bottom: 10px;">
                     {{ lanche_form.descricao.label }}
                     {{ lanche_form.descricao }}
-                </div>
-
-                <div class="divDesc" style="margin-bottom: 10px;">
-                    {{ lanche_form.lancheIngrediente.label }}
-                    {{ lanche_form.lancheIngrediente }}
                 </div>
 
                 <div class="col-md-6 mb-3">
@@ -48,6 +43,10 @@
                     {{ lanche_form.estado.label }}
                     {{ lanche_form.estado }}
                 </div>
+
+                <span class="spanLocal">INGREDIENTES</span>
+
+
 
             </div><br>
             <button class="btn btn-success" type="submit">CRIAR</button>

@@ -31,7 +31,7 @@ class Lanche(models.Model):
     preco = models.DecimalField(max_digits=10, decimal_places=5, blank = False, null = False)
     #lancheTamanhoLanche = models.ForeignKey(tamanhoLanche, on_delete=models.CASCADE)
     foto = models.ImageField(upload_to = user_directory_path, default = 'sem-imagem-avatar.png')
-    lancheIngrediente = models.ManyToManyField(Ingrediente)
+    lancheIngrediente = models.ManyToManyField(Ingrediente, through='LancheIngredientes')
     estado = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -54,3 +54,8 @@ class Lanche(models.Model):
                 kwargs.pop('force_insert')
 
         super(Lanche, self).save(*args, **kwargs)
+
+class LancheIngredientes(models.Model):
+    lanche = models.ForeignKey(Lanche, on_delete=models.CASCADE)
+    ingrediente = models.ForeignKey(Ingrediente, on_delete=models.CASCADE)
+    quantidade = models.IntegerField(blank = False, null = False)
