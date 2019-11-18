@@ -57,6 +57,11 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-sm-2">
+                <span id="add-item" class="btn btn-info">
+                    <i class="fa fa-plus"></i>ADICIONAR 
+                </span>
+                </div>
 
             </div><br>
             <button class="btn btn-success" type="submit">CRIAR</button>
@@ -65,6 +70,32 @@
 {% endblock content %}
 {% block scriptPage %}
 <script type='text/javascript'>
-    $("select[name=estado]").toggleClass("custom-select");
+    //$("select[id='id_la_lancheIngrediente']").toggleClass("custom-select");
+    $('#id_lanche-0-ingrediente').addClass('custom-select');
+    $('#id_lanche-0-quantidade').addClass('form-control');
+    $(document).ready(function() {
+        $('#add-item').click(function(ev) {
+            console.log("teste");
+            var count = $('#estoque').children().length;
+            var tmplMarkup = $('#ingrediente-lanche').html();
+            var compiledTmpl = tmplMarkup.replace(/__prefix__/g, count);
+            $('div#estoque').append(compiledTmpl);
+
+            $('#id_lancheIngrediente-TOTAL_FORMS').attr('value', count + 1);
+            ev.preventDefault();
+
+            /*$('html, body').animate({
+                scrollTop: $("#add-item").position().top - 200
+            }, 800);*/
+            $('#id_lanche-' + (count) + '-ingrediente').addClass('custom-select');
+            $('#id_lanche-' + (count) + '-quantidade').addClass('form-control');
+        });
+    });
 </script>
+
+<script type="text/html" id="ingrediente-lanche">
+    <div id="item-__prefix__" class="form-group">
+      {{ formset.empty_form }}
+    </div>
+  </script>
 {% endblock scriptPage %}

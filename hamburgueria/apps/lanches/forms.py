@@ -6,13 +6,12 @@ from .models import LancheIngredientes
 class LancheForm(forms.ModelForm):
     class Meta:
         model = Lanche
-        fields = ['nome', 'descricao', 'preco', 'foto', 'lancheIngrediente', 'estado']
+        fields = ['nome', 'descricao', 'preco', 'foto', 'estado']
         labels = {
             'nome': 'Nome do Lanche',
             'descricao': 'Breve Descrição',
             'preco': 'Preço',
             'foto': 'Foto',
-            'lancheIngrediente': 'Ingredientes',
             'estado': 'Esta Ativo?',
         }
         widgets = {
@@ -41,23 +40,17 @@ class LancheForm(forms.ModelForm):
                     'name': 'preco',
                 }
             ),
-            'lancheIngrediente': forms.SelectMultiple(
-                attrs = {
-                    'class': 'form-control',
-                }
-            ),
         }
 
 class LancheFormReadonly(forms.ModelForm):
     class Meta:
         model = Lanche
-        fields = ['nome', 'descricao', 'preco', 'foto', 'lancheIngrediente', 'estado']
+        fields = ['nome', 'descricao', 'preco', 'foto', 'estado']
         labels = {
             'nome': 'Nome do Lanche',
             'descricao': 'Breve Descrição',
             'preco': 'Preço',
             'foto': 'Foto',
-            'lancheIngrediente': 'Ingredientes',
             'estado': 'Esta Ativo?',
         }
         widgets = {
@@ -87,12 +80,6 @@ class LancheFormReadonly(forms.ModelForm):
                     'id': 'id_preco',
                     'name': 'preco',
                     'readonly':'readonly',
-                }
-            ),
-            'lancheIngrediente': forms.SelectMultiple(
-                attrs = {
-                    'class': 'form-control',
-                    'disabled':'disabled',
                 }
             ),
         }

@@ -50,7 +50,7 @@ def criarLanche(request):
         validate_min=True,
     )
     if request.method == 'POST':
-        lanche_form = LancheForm(request.POST, request.FILES, instance=lanche_formu)
+        lanche_form = LancheForm(request.POST, request.FILES, instance=lanche_formu, prefix='main')
         formset = inglediente_lanche_formset(
             request.POST,
             instance=lanche_formu, 
@@ -62,7 +62,7 @@ def criarLanche(request):
             formset.save()
             return redirect('lanches')
     else:
-        lanche_form = LancheForm()
+        lanche_form = LancheForm(instance=lanche_formu, prefix='main')
         formset = inglediente_lanche_formset(instance=lanche_formu, prefix='lanche')
     print("lanche: "+str(lanche_form))
     return render(request, 'pages/lanchesAndBebidas/lanches/novo_lanche.html', {'lanche_form':lanche_form, 'formset':formset})
