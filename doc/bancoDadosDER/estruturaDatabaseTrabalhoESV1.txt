@@ -1,0 +1,149 @@
+﻿*Verificar em qual lugar se deve colocar os ingredientes e adicionais para poder debitar da quantidade das respectivas tabelas.
+*Verificar também o que será colocado na tabela de pedidos.
+*Verificar se é necessário colocar o  estado e o pais nas tabelas de funcionário, fornecedor e cliente
+*Verificar como faria uma tabela de devolução
+
+|-CLIENTES   ----
+|------idCliente
+|------Nome
+|------Sobrenome
+|------RG
+|------CPF
+|------Rua
+|------Bairro
+|------Cidade
+|------CEP
+|------Email
+|------numeroCasa
+|------Telefone_1
+|------Celular_1
+|------Telefone_2
+|------Celular_2
+|------Foto
+|------Ativo
+
+
+|-FORNECEDORES   ----
+|------RazãoSocial
+|------CNPJ
+|------IE
+|------Rua
+|------Bairro
+|------Cidade
+|------CEP
+|------Email
+|------Telefone_1
+|------Celular_1
+|------Telefone_2
+|------Celular_2
+|------Foto
+|------Ativo
+
+
+|-FUNCIONARIOS   ----
+|------idFuncionario
+|------Nome
+|------Sobrenome
+|------RG
+|------CPF
+|------Rua
+|------Bairro
+|------Cidade
+|------CEP
+|------Email
+|------numeroCasa
+|------tipoFuncionario
+|------Telefone_1
+|------Celular_1
+|------Telefone_2
+|------Celular_2
+|------Foto
+|------Senha
+|------Ativo
+|------Admissão
+
+
+|-TIPOFUNCIONARIO   ----
+|------idTipoFuncionario
+|------Nome
+|------Descrição
+
+
+|-LANCHES   ----
+|------idLanches
+|------Nome
+|------Descrição
+|------Preço
+|------tipoLanche
+|------tamanhoLanche
+
+
+|-TAMANHOLANCHE   ----
+|------idTamanhoLanche
+|------Nome
+|------Descrição
+
+
+|-BEBIDAS   ----
+|------idBebidas
+|------Nome
+|------Descrição
+|------Preço
+|------eAlcoolico
+|------tamanhoBebida
+
+
+|-TAMANHOBEBIDA   ----
+|------idTamanhoBebida
+|------Nome
+|------Descrição
+
+
+|-INGREDIENTES   ----
+|------idIngredientes
+|------Nome
+|------Descrição
+|------Preço
+|------Fornecedor
+|------Quantidade
+
+
+|-ADICIONAIS   ----
+|------idAdicionais
+|------Nome
+|------Descrição
+|------Preço
+|------Fornecedor
+|------Quantidade
+
+
+|-PEDIDOS   ----
+|------idPedido
+|------idFuncionario
+|------idCliente
+|------DataPedido
+|------isDelivery
+--|------NomeEntrega
+--|------EndereçoEntrega
+|------Mesa
+
+
+|-CIDADE   ----
+|------idCidade
+|------Nome
+|------Descrição
+|------Estado
+
+
+|-ESTADO   ----
+|------idEstado
+|------Nome
+|------Descrição
+|------UF
+|------Pais
+
+
+|-PAIS   ----
+|------idPais
+|------Nome
+|------Sigla
