@@ -12,3 +12,7 @@ tests/coverage_html/
 tests/.coverage
 build/
 tests/report/
+*.sqlite3
+*.DS_Store
+**/__pycache__
+**/.DS_Store
